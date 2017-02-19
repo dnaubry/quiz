@@ -59,8 +59,14 @@ button {
     letter-spacing: 3px;
     border: solid 5px #71A091;
     padding: 10px;
+    margin: 0px 15px;
 }
 
 button:hover {
     color: #2F292C;
+}
+
+#msg {
+    font-size: 2em;
+    padding: 5px;
 }
