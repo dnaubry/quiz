@@ -17,48 +17,33 @@ var allQuestions = [
         choices: ["Fire cannot kill a dragon", "Blood of the Dragon", "All men must die, but we are not men", "Fire and Blood"],
         correctAnswer: 3
     }
-];
+],
 
-var answers = [],
-    answerTracker = [],
-    questionCount = 0, // Keeps track of current question
-    quizLength = allQuestions.length - 1; // Number of questions in the quiz
+    answers = [],           // Array to store chosen answers
+    q = 0,                  // Counter to keep track of current question
+    quizLength = allQuestions.length - 1,   
+    startBtn = document.getElementById("startBtn");
 
-// scoreQuestions checks if the answer is correct and adds correct/incorrect to the answers array
-function quizScore(questionCount) {
-    var checked = document.querySelector('[name=choices]:checked').value;
-
-    if (answers[questionCount] === undefined) {
-        if (checked == allQuestions[questionCount].correctAnswer) {
-            answers.push("correct");
-        } else {
-            answers.push("incorrect");
-        }
-    } else {
-        if (checked == allQuestions[questionCount].correctAnswer) {
-            answers[questionCount] = "correct";
-        } else {
-            answers[questionCount] = "incorrect";
-        }
-    }
-}
-
-// Adds selected answer to answerTracker array
-function trackAnswers(questionCount) {
+// Adds selected answer to answerTracker array for scoring
+function trackAnswers(q) {
     var answer = document.querySelector('[name=choices]:checked').value;
-
-    if (answerTracker[questionCount] === undefined) {
-        answerTracker.push(answer);
-    } else {
-        answerTracker[questionCount] = answer;
-    }
+    answers[q] = answer;
 }
 
-function finalScore (answers, answerTracker) {
-    var scoreText = document.getElementById("question");
-    scoreText.innerHTML= "<p>You finished!</p>";
+// Calculates and displays final score
+function finalScore (answers) {
+    var scoreText = document.getElementById("question"),
+        correct = 0;
+    
+    for (var i = 0; i < answers.length; i++) {
+        if (answers[i] == allQuestions[i].correctAnswer){
+            correct += 1;
+        } 
+    }
+    
+    scoreText.innerHTML= `<p>You finished! You got ${correct} out of ${answers.length} questions correct.</p>`;
     for (var i = 0, num= 1; i < answers.length; i++, num++) {
-        scoreText.innerHTML += `<p>Question ${num}: "${allQuestions[i].choices[answerTracker[i]]}" - ${answers[i].toUpperCase()}!`;
+        scoreText.innerHTML += `<p>Question ${num}: Your answer - "${allQuestions[i].choices[answers[i]]}"`;
     }
     
 }
@@ -86,22 +71,21 @@ function validationMsg() {
 
 }
 
-// Inserts the current question, determined by questionCount, into the #question <div>
-function insertQuestion(questionCount) {
-    var questionText = document.getElementById("question"),
-        numberOfChoices = allQuestions[questionCount].choices.length,
-        qNum = questionCount + 1;
+// Inserts the current question, determined by counter q
+function insertQuestion(q) {
+    var qText = document.getElementById("question"),
+        numChoices = allQuestions[q].choices.length,
+        qNum = q + 1;
     
-    questionText.innerHTML = `<p>Question ${qNum}`;
-    questionText.innerHTML += `<p class="qText">${allQuestions[questionCount].question}</p>`;
+    qText.innerHTML = `<p>Question ${qNum}`;
+    qText.innerHTML += `<p class="qText">${allQuestions[q].question}</p>`;
     // Loops through question choices and prints each with a radio button
-    for (var i = 0; i < numberOfChoices; i++) {
-        questionText.innerHTML += `<p><label><input type="radio" name="choices" value="${i}"/> ${allQuestions[questionCount].choices[i]}</label></p>`;
+    for (var i = 0; i < numChoices; i++) {
+        qText.innerHTML += `<p><label><input type="radio" name="choices" value="${i}"/> ${allQuestions[q].choices[i]}</label></p>`;
     }
-    // If the user goes back, checks the answer they previously selected
-    if (answerTracker[questionCount] !== undefined) {
-        var currentAnswer = answerTracker[questionCount];
-        document.querySelector(`input[value="${currentAnswer}"]`).checked = true;
+    // If the user goes back a question, checks the radio they previously selected
+    if (answers[q] !== undefined) {
+        document.querySelector(`input[value="${answers[q]}"]`).checked = true;
     }
 }
 
@@ -110,28 +94,27 @@ function reloadQuiz() {
 }
 
 function retryQuiz() {
-    var btns = document.getElementById("btn"),
+    var btnEl = document.getElementById("btn"),
         retryBtn;
-    btns.innerHTML = `<button name="retry" id="retryBtn">Retry</button>`;
+    btnEl.innerHTML = `<button name="retry" id="retryBtn">Retry</button>`;
     retryBtn = document.getElementById("retryBtn");
     retryBtn.addEventListener('click', reloadQuiz, false);
 }
 
-var startBtn = document.getElementById("startBtn");
 startBtn.addEventListener('click', function () {
-    quizNavBtns(questionCount);
-    insertQuestion(questionCount);
+    quizNavBtns(q);
+    insertQuestion(q);
 }, false);
 
-function quizNavBtns(questionCount) {
-    var btns = document.getElementById("btn"),
+function quizNavBtns(q) {
+    var btnEl = document.getElementById("btn"),
         backBtn,
         nextBtn;
-    if (questionCount === 0) {
-        btns.innerHTML = `<button name="next" id="nextBtn">Next</button>`;
+    if (q === 0) {
+        btnEl.innerHTML = `<button name="next" id="nextBtn">Next</button>`;
         nextBtn = document.getElementById("nextBtn");
     } else {
-        btns.innerHTML = `<button name="back" id="backBtn">Back</button><button name="next" id="nextBtn">Next</button>`;
+        btnEl.innerHTML = `<button name="back" id="backBtn">Back</button><button name="next" id="nextBtn">Next</button>`;
         backBtn = document.getElementById("backBtn");
         nextBtn = document.getElementById("nextBtn");
     }
@@ -144,15 +127,14 @@ function quizNavBtns(questionCount) {
 
 function nextQuestion() {
     if (radioChecked()) {
-        quizScore(questionCount);
-        trackAnswers(questionCount);
-        if (questionCount != quizLength) {
-            questionCount++;
-            quizNavBtns(questionCount);
-            insertQuestion(questionCount);
+        trackAnswers(q);
+        if (q != quizLength) {
+            q++;
+            quizNavBtns(q);
+            insertQuestion(q);
         } else {
             retryQuiz();
-            finalScore(answers, answerTracker);
+            finalScore(answers);
         }
     } else {
         validationMsg();
@@ -160,7 +142,7 @@ function nextQuestion() {
 }
 
 function prevQuestion() {
-    questionCount--;
-    quizNavBtns(questionCount);
-    insertQuestion(questionCount);
+    q--;
+    quizNavBtns(q);
+    insertQuestion(q);
 }
