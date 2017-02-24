@@ -36,17 +36,21 @@ function finalScore (answers) {
         correct = 0;
     
     for (var i = 0; i < answers.length; i++) {
-        if (answers[i] == allQuestions[i].correctAnswer){
+         if (answers[i] == allQuestions[i].correctAnswer){
             correct += 1;
-        } 
     }
+    }
+    scoreText.innerHTML = `<p>You finished the quiz! You got ${correct} out of ${answers.length} questions correct.</p>`;
     
-    scoreText.innerHTML= `<p>You finished! You got ${correct} out of ${answers.length} questions correct.</p>`;
     for (var i = 0, num= 1; i < answers.length; i++, num++) {
-        scoreText.innerHTML += `<p>Question ${num}: Your answer - "${allQuestions[i].choices[answers[i]]}"`;
+        if (answers[i] == allQuestions[i].correctAnswer){
+            scoreText.innerHTML += `<p>Question ${num} - ${allQuestions[i].choices[answers[i]]}<i class="fa fa-check" aria-hidden="true"></i></p>`;
+        } else {
+            scoreText.innerHTML += `<p>Question ${num} - ${allQuestions[i].choices[answers[i]]}<i class="fa fa-times" aria-hidden="true"></i></p>`;
+        }   
     }
-    
 }
+
 
 // Checks if the user selected an answer
 function radioChecked() {
@@ -77,11 +81,11 @@ function insertQuestion(q) {
         numChoices = allQuestions[q].choices.length,
         qNum = q + 1;
     
-    qText.innerHTML = `<p>Question ${qNum}`;
+    qText.innerHTML = `<h2>Question ${qNum}</h2>`;
     qText.innerHTML += `<p class="qText">${allQuestions[q].question}</p>`;
     // Loops through question choices and prints each with a radio button
     for (var i = 0; i < numChoices; i++) {
-        qText.innerHTML += `<p><label><input type="radio" name="choices" value="${i}"/> ${allQuestions[q].choices[i]}</label></p>`;
+        qText.innerHTML += `<p class="question-choice"><input type="radio" name="choices" id="choice${i}" value="${i}"/><label for="choice${i}">${allQuestions[q].choices[i]}</label></p>`;
     }
     // If the user goes back a question, checks the radio they previously selected
     if (answers[q] !== undefined) {

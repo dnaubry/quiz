@@ -1,72 +1,95 @@
-/*
-#E0E1DD
-#C3DCD4
-#98CCC0
-#71A091
-#979186
-#C2BDB2
-*/
-
+@import url(font-awesome-4.7.0/css/font-awesome.min.css);
 @import url('https://fonts.googleapis.com/css?family=Cabin|Open+Sans');
 
 body {
     font-family: 'Open Sans', sans-serif;
-    background-color:#C2BDB2;
-    margin: 0px;
+    background-color: #BEBABC;
+    margin: 0 auto;
 }
 
 h1 {
     font-family: 'Cabin', sans-serif;
-    color: #71A091;
+    color: #1F2F3C;
     font-size: 4em;
     text-shadow: 2px 2px #E9E7E4;
     letter-spacing: 6px;
-    padding: 0px 20px;
+    margin: 0;
+    padding: 30px 20px;
 }
 
+h2 {
+    font-weight: 400;
+}
 
+.intro {
+    text-align: center;
+}
 
 #question {
-    background-color: #E0E1DD;
+    background-color: #E0DFE0;
     color: #000;
-    font-size: 2em;
+    font-size: 1.2em;
     font-weight: 900;
     margin: 0px auto;
-    padding: 20px;
+    padding: 10px 20px;
 }
 
 .qText {
     text-align: center;
-    font-size: 1.3em;
+    font-size: 1.8em;
+}
+
+.question-choice {
+    display: flex;
+    align-items: baseline;
+}
+
+input[type="radio"] {
+    flex: none;
 }
 
 label {
+    font-size: 1.2em;
+    margin: 0;
     font-weight: 400;
-    font-size: 0.8em;
 }
 
 #btn {
-    text-align: right;
+    text-align: center;
     padding: 40px 100px;
+    background-color: #BEBABC;
 }
 
 button {
-    background-color: #C2BDB2;
+    background-color: #E0DFE0;
     font-family: 'Cabin', sans-serif;
-    color: #E0E1DD;
+    color: #525253;
     font-size: 1.5em;
     text-transform: uppercase;
     letter-spacing: 3px;
-    border: solid 5px #71A091;
+    border: solid 5px #5C7894;
     padding: 10px;
     margin: 0px 15px;
 }
 
 button:hover {
     color: #2F292C;
+     border: solid 5px #7C9AAF;
 }
 
 #msg {
-    font-size: 2em;
+    font-size: 1.5em;
     padding: 5px;
+}
+
+.fa {
+    padding: 0 10px;
+}
+
+.fa-check {
+    color: #71A091;
+}
+
+.fa-times {
+    color: #833336;
 }
