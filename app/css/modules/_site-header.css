@@ -1,0 +1,12 @@
+.site-header {
+
+  &__title {
+    font-family: 'Cabin', sans-serif;
+    color: #1F2F3C;
+    font-size: 4em;
+    text-shadow: 2px 2px #E9E7E4;
+    letter-spacing: 6px;
+    margin: 0;
+    padding: 30px 20px;
+  }
+}

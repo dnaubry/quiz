@@ -1,0 +1,36 @@
+.btn-container {
+  text-align: center;
+  padding: 40px 100px;
+  background-color: #BEBABC;
+
+  &__left {
+    display: inline;
+  }
+
+  &__right {
+    display: inline;
+  }
+
+  &__button {
+      display: none;
+      background-color: #E0DFE0;
+      font-family: 'Cabin', sans-serif;
+      color: #525253;
+      font-size: 1.5em;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      border: solid 5px #5C7894;
+      padding: 10px;
+      margin: 0px 15px;
+
+    &--is-visible {
+      display: inline;
+    }
+
+    &:hover {
+      color: #2F292C;
+      border: solid 5px #7C9AAF;
+      cursor: pointer;
+    }
+  }
+}

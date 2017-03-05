@@ -1,0 +1,47 @@
+.questions {
+    background-color: #E0DFE0;
+    color: #000;
+    font-size: 1.2em;
+    font-weight: 900;
+    margin: 0px auto;
+    padding: 10px 20px;
+
+    &__intro {
+      text-align: center;
+    }
+
+    &__text {
+      text-align: center;
+      font-size: 1.8em;
+    }
+
+    &__choice {
+      display: flex;
+      align-items: baseline;
+
+      &--label {
+        font-size: 1.2em;
+        margin: 0;
+        font-weight: 400;
+      }
+    }
+
+    &__score {
+
+      &--correct {
+        padding-left: 10px;
+        color: green;
+        transform: scaleX(1.2em;);
+      }
+
+      &--incorrect {
+        padding-left: 10px;
+        color: red;
+        transform: scaleX(1.2em;);
+      }
+    }
+}
+
+input[type="radio"] {
+    flex: none;
+}
