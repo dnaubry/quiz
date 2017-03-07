@@ -6,6 +6,10 @@
     margin: 0px auto;
     padding: 10px 20px;
 
+    @mixin atLarge {
+      max-width: 70%;
+    }
+
     &__intro {
       text-align: center;
     }
@@ -15,7 +19,12 @@
       font-size: 1.8em;
     }
 
-    &__choice {
+    &__question-text {
+      text-align: center;
+      font-size: 1.8em;
+    }
+
+    &__question-choice {
       display: flex;
       align-items: baseline;
 

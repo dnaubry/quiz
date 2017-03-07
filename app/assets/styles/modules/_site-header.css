@@ -1,5 +1,10 @@
 .site-header {
 
+  @mixin atLarge {
+    max-width: 70%;
+    margin: 0 auto;
+  }
+
   &__title {
     font-family: 'Cabin', sans-serif;
     color: #1F2F3C;
@@ -8,5 +13,9 @@
     letter-spacing: 6px;
     margin: 0;
     padding: 30px 20px;
+
+    @mixin atLarge {
+      padding-left: 0;
+    }
   }
 }

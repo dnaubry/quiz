@@ -3,32 +3,32 @@ var gulp = require('gulp'),
     browserSync = require('browser-sync').create();
 
 gulp.task('watch', function () {
-    
+
     browserSync.init({
         notify: false,
         server: {
             baseDir: "app"
-        }    
+        }
     });
-    
-    watch('./index.html', function () {
+
+    watch('./app/index.html', function () {
         browserSync.reload();
     });
 
-    watch('./app/css/**/*.css', function () {
+    watch('./app/assets/styles/**/*.css', function () {
         gulp.start('cssInject');
     });
-    
-    watch('./js/*.js', function() {
+
+    watch('./app/assets/scripts/**/*.js', function() {
         gulp.start('scriptsRefresh');
     });
 });
 
 gulp.task('cssInject', ['styles'], function () {
-    return gulp.src('./temp/css/styles.css')
+    return gulp.src('./app/temp/styles/styles.css')
     .pipe(browserSync.stream());
 });
 
-gulp.task('scriptsRefresh', function() {
+gulp.task('scriptsRefresh', ['scripts'], function() {
     browserSync.reload();
 })
