@@ -384,8 +384,10 @@ function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj);
 module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression, alias5=container.lambda;
 
-  return "<h2 class=\"questions__question-title\">Question "
+  return "<h2 class=\"questions__question-title\">"
     + alias4(((helper = (helper = helpers.qNum || (depth0 != null ? depth0.qNum : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"qNum","hash":{},"data":data}) : helper)))
+    + " of "
+    + alias4(((helper = (helper = helpers.quizLength || (depth0 != null ? depth0.quizLength : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"quizLength","hash":{},"data":data}) : helper)))
     + "</h2>\r\n\r\n<p class=\"questions__question-text\">"
     + alias4(((helper = (helper = helpers.question || (depth0 != null ? depth0.question : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"question","hash":{},"data":data}) : helper)))
     + "</p>\r\n\r\n<p class=\"questions__question-choice\">\r\n  <input type=\"radio\" name=\"choices\" id=\"choice1\" value=\"0\" />\r\n  <label for=\"choice1\" class=\"questions__question-choice--label\">"
@@ -408,13 +410,13 @@ function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj);
 module.exports = (Handlebars["default"] || Handlebars).template({"1":function(container,depth0,helpers,partials,data) {
     var stack1, alias1=container.lambda, alias2=container.escapeExpression;
 
-  return "  <p class=\"questions__score\">\r\n    Question "
+  return "<ul>\r\n  <li class=\"questions__score\">\r\n    "
     + alias2(alias1((depth0 != null ? depth0.questionNumber : depth0), depth0))
     + " - "
     + alias2(alias1((depth0 != null ? depth0.choice : depth0), depth0))
     + "\r\n"
     + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.correct : depth0),{"name":"if","hash":{},"fn":container.program(2, data, 0),"inverse":container.program(4, data, 0),"data":data})) != null ? stack1 : "")
-    + "  </p>\r\n";
+    + "  </li>\r\n</ul>\r\n";
 },"2":function(container,depth0,helpers,partials,data) {
     return "        <span class=\"questions__score--correct\">✔</span>\r\n";
 },"4":function(container,depth0,helpers,partials,data) {
@@ -424,9 +426,9 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
 
   return "<p class=\"questions__score__intro\">Your score:\r\n  "
     + alias4(((helper = (helper = helpers.numberCorrect || (depth0 != null ? depth0.numberCorrect : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"numberCorrect","hash":{},"data":data}) : helper)))
-    + "/"
+    + " / "
     + alias4(((helper = (helper = helpers.quizLength || (depth0 != null ? depth0.quizLength : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"quizLength","hash":{},"data":data}) : helper)))
-    + "</p>\r\n"
+    + "</p>\r\n\r\n"
     + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.answers : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
 },"useData":true});
 
@@ -1448,6 +1450,7 @@ function insertCurrentQuestion(q) {
   var qText = document.querySelector('.questions'),
       context = {
     qNum: q + 1,
+    quizLength: allQuestions.length,
     question: allQuestions[q].question,
     choices: allQuestions[q].choices
   },
@@ -1474,17 +1477,21 @@ function radioChecked() {
 
 // Displays a message if user does not choose an answer
 function validationMsg() {
-  var msgEl = document.createElement('div'),
-      msg = document.createTextNode('Please choose an answer!'),
-      position = document.querySelector('.btn-container'),
-      radios = document.getElementsByName('choices');
+  var msgExists = document.getElementById('msg');
+  if (!document.body.contains(msgExists)) {
+    var msgEl = document.createElement('div'),
+        msg = document.createTextNode('Please choose an answer!'),
+        position = document.querySelector('.btn-container'),
+        radios = document.getElementsByName('choices');
 
-  msgEl.id = 'msg';
-  msgEl.appendChild(msg);
-  position.appendChild(msgEl);
+    msgEl.id = 'msg';
+    msgEl.classList.add('btn-container__msg');
+    msgEl.appendChild(msg);
+    position.appendChild(msgEl);
 
-  for (var i = 0; i < radios.length; i++) {
-    radios[i].addEventListener('change', removeValidationMsg, false);
+    for (var i = 0; i < radios.length; i++) {
+      radios[i].addEventListener('change', removeValidationMsg, false);
+    }
   }
 
   function removeValidationMsg() {

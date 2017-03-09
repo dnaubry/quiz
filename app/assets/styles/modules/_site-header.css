@@ -1,21 +1,43 @@
 .site-header {
+  margin: 0 0 0.5rem;
+  padding: 1.5rem 1rem 1.8rem;
+  overflow: hidden;
+  position: relative;
 
-  @mixin atLarge {
-    max-width: 70%;
-    margin: 0 auto;
+  @mixin atSmall {
+    padding: 1.5rem 2.5rem 2.5rem;
   }
+
+  /*&::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transform: skewY(3deg);
+    background-color: $mainRed;
+    transform-origin: top right;
+    z-index: -1;
+  }*/
 
   &__title {
     font-family: 'Cabin', sans-serif;
-    color: #1F2F3C;
-    font-size: 4em;
-    text-shadow: 2px 2px #E9E7E4;
-    letter-spacing: 6px;
+    color: #000;
+    font-size: 2rem;
+    text-shadow: 0.5px 0.5px $mainGray;
+    letter-spacing: 5px;
     margin: 0;
-    padding: 30px 20px;
+    padding: 0;
+    border-bottom: 1px solid $mainRed;
+    text-align: center;
 
-    @mixin atLarge {
+    @mixin atSmall {
+      text-align: left;
+      font-size: 3.5rem;
       padding-left: 0;
+      letter-spacing: 6px;
+      text-shadow: 1px 1px $mainGray;
     }
   }
 }

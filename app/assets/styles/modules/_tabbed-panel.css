@@ -1,0 +1,113 @@
+.tabbed-panel {
+
+  @mixin atSmall {
+    float: left;
+    width: 100%;
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__title {
+    padding: 0;
+    font-size: .95rem;
+    box-sizing: border-box;
+    margin: 0;
+    font-weight: normal;
+
+    &:hover {
+      color: $mainRed;
+    }
+
+    @mixin atSmall {
+      float: left;
+      padding: 0.5em 0 0;
+    }
+
+    &__label {
+      position: relative;
+      z-index: 20;
+      display: block;
+      height: 40px;
+      line-height: 40px;
+      padding: 0 0 0 10px;
+      border: 1px solid #000;
+      border-bottom: none;
+      background-color: #fff;
+      cursor: pointer;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -webkit-user-select: none;
+
+      @mixin atSmall {
+        border: none;
+        border-top: 1px solid #000;
+        border-right: 1px solid #000;
+      }
+
+      &--first {
+        border-left: 1px solid #000;
+      }
+
+      &--last {
+        border-bottom: 1px solid #000;
+
+        @mixin atSmall {
+          border-bottom: none;
+        }
+      }
+
+      @mixin atSmall {
+        height: auto;
+        z-index: 0;
+        display: block;
+        padding: 0.25em 0.75em;
+        line-height: normal;
+        box-shadow: 0 0 0.5em rgba(0,0,0,0.0625);
+      }
+    }
+  }
+
+  &__section > div {
+    background-color: #fff;
+    box-sizing: border-box;
+    border: 1px solid #000;
+    border-bottom: none;
+
+
+    @mixin atSmall {
+      height: auto;
+      float: right;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      margin: 2.1em 0 0 -100%;
+      padding: 0.5em 0.75em;
+      border: 1px solid #000;
+      box-shadow: 0 0 0.5em rgba(0,0,0,0.0625);
+    }
+  }
+
+  &__section:last-of-type > div:last-of-type {
+    border: 1px solid #000;
+    border-top: none;
+
+    @mixin atSmall {
+      border-top: 1px solid #000;
+    }
+  }
+
+  &__input:checked + &__section > h1 {
+    color: $mainRed;
+
+    @mixin atSmall {
+      position: relative;
+      z-index: 2;
+    }
+  }
+
+  &__input:not(:checked) + &__section > div {
+    display: none;
+  }
+}

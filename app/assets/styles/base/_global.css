@@ -1,5 +1,15 @@
+html {
+  height: 100%;
+}
+
 body {
     font-family: 'Source Sans Pro', sans-serif;
-    background-color: #BEBABC;
-    margin: 0 auto;
+    background-color: $mainGray;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+  color: #000;
 }

@@ -11,28 +11,148 @@
     <header class="site-header">
       <h1 class="site-header__title">Quizzed on TV</h1>
     </header>
-    <div class="questions">
-      <p class="questions__intro">First up we have a test of your Game of Thrones house knowledge.</p>
-      <p class="questions__intro">Click START to begin the quiz!</p>
-    </div>
-    <div class="btn-container">
-      <div class="btn-container__left">
-        <button name="back" class="btn-container__button" id="backBtn">
-          Back
-        </button>
+    <div class="wrapper">
+      <div id="quizzes" class="main-section">
+        <div class="tabbed-panel">
+
+          <!-- Game of Thones panel -->
+
+          <input type="radio" name="tabbed" id="tabbed1" class="tabbed-panel__input" checked>
+          <section class="tabbed-panel__section">
+            <h1 class="tabbed-panel__title">
+              <label for="tabbed1" class="tabbed-panel__title__label tabbed-panel__title__label--first">Game of Thones</label>
+            </h1>
+            <div class="tabbed-panel__content">
+              <div class="questions">
+                <p class="questions__intro">Game of Thrones</p>
+                <p class="questions__intro">Click START to begin the quiz!</p>
+              </div>
+              <div class="btn-container">
+                <div class="btn-container__left">
+                  <button name="back" class="btn-container__button" id="backBtn">
+                    Back
+                  </button>
+                </div>
+                <div class="btn-container__right">
+                  <button name="start" class="btn-container__button btn-container__button--is-visible" id="startBtn">
+                    Start
+                  </button>
+                  <button name="next" class="btn-container__button" id="nextBtn">
+                    Next
+                  </button>
+                  <button name="retry" class="btn-container__button" id="retryBtn">
+                    Retry
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Buffy panel -->
+
+          <input type="radio" name="tabbed" id="tabbed2" class="tabbed-panel__input">
+          <section class="tabbed-panel__section">
+            <h1 class="tabbed-panel__title">
+              <label for="tabbed2" class="tabbed-panel__title__label">Buffy the Vampire Slayer</label>
+            </h1>
+            <div class="tabbed-panel__content">
+              <div class="questions">
+                <p class="questions__intro">Buffy the Vampire Slayer Quiz</p>
+                <p class="questions__intro">Click START to begin the quiz!</p>
+              </div>
+              <div class="btn-container">
+                <div class="btn-container__left">
+                  <button name="back" class="btn-container__button" id="backBtn">
+                    Back
+                  </button>
+                </div>
+                <div class="btn-container__right">
+                  <button name="start" class="btn-container__button btn-container__button--is-visible" id="startBtn">
+                    Start
+                  </button>
+                  <button name="next" class="btn-container__button" id="nextBtn">
+                    Next
+                  </button>
+                  <button name="retry" class="btn-container__button" id="retryBtn">
+                    Retry
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Parks and Rec panel -->
+
+          <input type="radio" name="tabbed" id="tabbed3" class="tabbed-panel__input">
+          <section class="tabbed-panel__section">
+            <h1 class="tabbed-panel__title">
+              <label for="tabbed3" class="tabbed-panel__title__label">Parks and Rec</label>
+            </h1>
+            <div class="tabbed-panel__content">
+              <div class="questions">
+                <p class="questions__intro">Parks and Rec Quiz</p>
+                <p class="questions__intro">Click START to begin the quiz!</p>
+              </div>
+              <div class="btn-container">
+                <div class="btn-container__left">
+                  <button name="back" class="btn-container__button" id="backBtn">
+                    Back
+                  </button>
+                </div>
+                <div class="btn-container__right">
+                  <button name="start" class="btn-container__button btn-container__button--is-visible" id="startBtn">
+                    Start
+                  </button>
+                  <button name="next" class="btn-container__button" id="nextBtn">
+                    Next
+                  </button>
+                  <button name="retry" class="btn-container__button" id="retryBtn">
+                    Retry
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- X-Files panel -->
+
+          <input type="radio" name="tabbed" id="tabbed4" class="tabbed-panel__input">
+          <section class="tabbed-panel__section tabbed-panel__section--last">
+            <h1 class="tabbed-panel__title">
+              <label for="tabbed4" class="tabbed-panel__title__label tabbed-panel__title__label--last">X-Files</label>
+            </h1>
+            <div class="tabbed-panel__content tabbed-panel__content--last">
+              <div class="questions">
+                <p class="questions__intro">X-Files Quiz</p>
+                <p class="questions__intro">Click START to begin the quiz!</p>
+              </div>
+              <div class="btn-container">
+                <div class="btn-container__left">
+                  <button name="back" class="btn-container__button" id="backBtn">
+                    Back
+                  </button>
+                </div>
+                <div class="btn-container__right">
+                  <button name="start" class="btn-container__button btn-container__button--is-visible" id="startBtn">
+                    Start
+                  </button>
+                  <button name="next" class="btn-container__button" id="nextBtn">
+                    Next
+                  </button>
+                  <button name="retry" class="btn-container__button" id="retryBtn">
+                    Retry
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
       </div>
-      <div class="btn-container__right">
-        <button name="start" class="btn-container__button btn-container__button--is-visible" id="startBtn">
-          Start
-        </button>
-        <button name="next" class="btn-container__button" id="nextBtn">
-          Next
-        </button>
-        <button name="retry" class="btn-container__button" id="retryBtn">
-          Retry
-        </button>
-      </div>
     </div>
-      <script src="/temp/scripts/App.js"></script>
+    <footer class="site-footer">
+      <p class="site-footer__text">Created by Danielle Aubry -
+        <a href="https://www.danielleaubry.com">danielleaubry.com</a></p>
+    </footer>
+    <script src="/temp/scripts/App.js"></script>
   </body>
 </html>

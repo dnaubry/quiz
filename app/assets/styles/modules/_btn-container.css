@@ -1,7 +1,10 @@
 .btn-container {
   text-align: center;
-  padding: 40px 100px;
-  background-color: #BEBABC;
+  padding: 0 0 20px 0;
+
+  @mixin atSmall {
+    margin: 15px 0;
+  }
 
   &__left {
     display: inline;
@@ -13,24 +16,40 @@
 
   &__button {
       display: none;
-      background-color: #E0DFE0;
+      background-color: $mainGray;
       font-family: 'Cabin', sans-serif;
-      color: #525253;
-      font-size: 1.5em;
-      text-transform: uppercase;
+      color: #000;
+      font-size: 1.2rem;
       letter-spacing: 3px;
-      border: solid 5px #5C7894;
+      border: 2px solid #000;
       padding: 10px;
       margin: 0px 15px;
+      transition: all 0.3s ease;
+
+      @mixin atSmall {
+        font-size: 1.5rem;
+      }
 
     &--is-visible {
       display: inline;
     }
 
     &:hover {
-      color: #2F292C;
-      border: solid 5px #7C9AAF;
-      cursor: pointer;
+      @mixin atSmall {
+        background: #000;
+        color: #fff;
+        cursor: pointer;
+      }
+
     }
+  }
+
+  &__msg {
+    padding-top: 10px;
+    margin-bottom: 0;
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }

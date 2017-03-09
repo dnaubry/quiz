@@ -1,12 +1,15 @@
 <p class="questions__score__intro">Your score:
-  {{numberCorrect}}/{{quizLength}}</p>
+  {{numberCorrect}} / {{quizLength}}</p>
+
 {{#each answers}}
-  <p class="questions__score">
-    Question {{this.questionNumber}} - {{this.choice}}
+<ul>
+  <li class="questions__score">
+    {{this.questionNumber}} - {{this.choice}}
       {{#if this.correct}}
         <span class="questions__score--correct">✔</span>
       {{else}}
         <span class="questions__score--incorrect">X</span>
       {{/if}}
-  </p>
+  </li>
+</ul>
 {{/each}}

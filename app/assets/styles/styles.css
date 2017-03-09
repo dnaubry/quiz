@@ -1,8 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=Cabin:700|Source+Sans+Pro');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro|Cabin');
 @import "normalize.css";
 @import "base/_variables";
 @import "base/_mixins";
 @import "base/_global";
+@import "modules/_wrapper";
+@import "modules/_main-section";
+@import "modules/_tabbed-panel";
 @import "modules/_btn-container";
 @import "modules/_site-header";
 @import "modules/_questions";
+@import "modules/_site-footer";

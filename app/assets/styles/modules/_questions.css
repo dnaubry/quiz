@@ -1,14 +1,9 @@
 .questions {
-    background-color: #E0DFE0;
     color: #000;
     font-size: 1.2em;
     font-weight: 900;
     margin: 0px auto;
     padding: 10px 20px;
-
-    @mixin atLarge {
-      max-width: 70%;
-    }
 
     &__intro {
       text-align: center;
@@ -16,12 +11,27 @@
 
     &__text {
       text-align: center;
-      font-size: 1.8em;
+      font-size: 1.5em;
+    }
+
+    &__question-title {
+      font-size: 1.1rem;
+      word-spacing: .4rem;
+      border-bottom: .5px solid #000;
+
+      @mixin atSmall {
+        font-size: 1.5rem;
+        word-spacing: .7rem;
+      }
     }
 
     &__question-text {
       text-align: center;
-      font-size: 1.8em;
+      font-size: 1.3rem;
+
+      @mixin atSmall {
+        font-size: 1.5rem;
+      }
     }
 
     &__question-choice {
@@ -29,13 +39,28 @@
       align-items: baseline;
 
       &--label {
-        font-size: 1.2em;
+        font-size: 1em;
         margin: 0;
         font-weight: 400;
+        padding-left: 10px;
+
+        @mixin atSmall {
+          font-size: 1.3rem;
+        }
       }
     }
 
     &__score {
+      font-size: 1rem;
+
+      @mixin atSmall {
+        font-size: 1.3rem;
+      }
+
+      &__intro {
+        word-spacing: .5rem;
+        border-bottom: .5px solid #000;
+      }
 
       &--correct {
         padding-left: 10px;
@@ -51,6 +76,6 @@
     }
 }
 
-input[type="radio"] {
+input[name="choices"] {
     flex: none;
 }

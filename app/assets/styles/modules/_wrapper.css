@@ -1,0 +1,19 @@
+.wrapper {
+  width: 100%;
+  flex: 1;
+
+  @mixin atSmall {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  @mixin atMedium {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  @mixin atLarge {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
