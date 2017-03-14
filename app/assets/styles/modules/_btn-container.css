@@ -19,7 +19,7 @@
       background-color: $mainGray;
       font-family: 'Cabin', sans-serif;
       color: #000;
-      font-size: 1.2rem;
+      font-size: 1rem;
       letter-spacing: 3px;
       border: 2px solid #000;
       padding: 10px;
@@ -27,7 +27,7 @@
       transition: all 0.3s ease;
 
       @mixin atSmall {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
       }
 
     &--is-visible {

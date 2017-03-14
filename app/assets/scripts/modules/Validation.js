@@ -1,29 +1,32 @@
-function Validation() {
-  var msgExists = document.getElementById('msg');
+// Displays a message asking user to choose an answer if one is not selected
+function validation(setNum) {
+  var msgExists = document.getElementById(`msg${setNum}`);
+  // Checks if the message already exists so it doesn't display multiple messages
+  if (!document.body.contains(msgExists)) {
+    var msgEl = document.createElement('div'),
+      msg = document.createTextNode('Please choose an answer!'),
+      position = document.getElementById(`buttonSet${setNum}`),
+      radios = document.getElementsByName(`choices${setNum}`);
 
-  function insertValidationMsg() {
-    if (!document.body.contains(msgExists)) {
-      var msgEl = document.createElement('div'),
-        msg = document.createTextNode('Please choose an answer!'),
-        position = document.querySelector('.btn-container'),
-        radios = document.getElementsByName('choices');
+    msgEl.id = `msg${setNum}`;
+    msgEl.classList.add('btn-container__msg');
+    msgEl.appendChild(msg);
+    position.appendChild(msgEl);
 
-      msgEl.id = 'msg';
-      msgEl.classList.add('btn-container__msg');
-      msgEl.appendChild(msg);
-      position.appendChild(msgEl);
-
-      for (var i = 0; i < radios.length; i++) {
-        radios[i].addEventListener('change', removeValidationMsg, false);
-      }
+    // Watches radio buttons for change and calls removeValidationMsg to remove the message
+    for (var i = 0; i < radios.length; i++) {
+      radios[i].addEventListener('change', function(e) {
+        removeValidationMsg(setNum);
+      }, false);
     }
-  }
-
-  function removeValidationMsg() {
-    var removeMsgEl = document.getElementById('msg'),
-      containerEl = removeMsgEl.parentNode;
-    containerEl.removeChild(removeMsgEl);
   }
 }
 
-export { validation, insertValidationMsg };
+// Removes message when an answer is selected
+function removeValidationMsg(setNum) {
+   var removeMsgEl = document.getElementById(`msg${setNum}`);
+   var containerEl = removeMsgEl.parentNode;
+    containerEl.removeChild(removeMsgEl);
+  }
+
+export { validation, removeValidationMsg };

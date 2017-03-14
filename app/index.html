@@ -23,27 +23,23 @@
               <label for="tabbed1" class="tabbed-panel__title__label tabbed-panel__title__label--first">Game of Thones</label>
             </h1>
             <div class="tabbed-panel__content">
-              <div class="questions">
+              <div class="questions" id="questions1">
                 <p class="questions__intro">Game of Thrones</p>
                 <p class="questions__intro">Click START to begin the quiz!</p>
               </div>
-              <div class="btn-container">
-                <div class="btn-container__left">
-                  <button name="back" class="btn-container__button" id="backBtn">
+              <div class="btn-container" id="buttonSet1">
+                  <button name="back" class="btn-container__button" id="backBtn1">
                     Back
                   </button>
-                </div>
-                <div class="btn-container__right">
-                  <button name="start" class="btn-container__button btn-container__button--is-visible" id="startBtn">
+                  <button name="start" class="btn-container__button btn-container__button--is-visible" id="startBtn1">
                     Start
                   </button>
-                  <button name="next" class="btn-container__button" id="nextBtn">
+                  <button name="next" class="btn-container__button" id="nextBtn1">
                     Next
                   </button>
-                  <button name="retry" class="btn-container__button" id="retryBtn">
+                  <button name="retry" class="btn-container__button" id="retryBtn1">
                     Retry
                   </button>
-                </div>
               </div>
             </div>
           </section>
@@ -56,27 +52,23 @@
               <label for="tabbed2" class="tabbed-panel__title__label">Buffy the Vampire Slayer</label>
             </h1>
             <div class="tabbed-panel__content">
-              <div class="questions">
+              <div class="questions" id="questions2">
                 <p class="questions__intro">Buffy the Vampire Slayer Quiz</p>
                 <p class="questions__intro">Click START to begin the quiz!</p>
               </div>
-              <div class="btn-container">
-                <div class="btn-container__left">
-                  <button name="back" class="btn-container__button" id="backBtn">
+              <div class="btn-container" id="buttonSet2">
+                  <button name="back" class="btn-container__button" id="backBtn2">
                     Back
                   </button>
-                </div>
-                <div class="btn-container__right">
-                  <button name="start" class="btn-container__button btn-container__button--is-visible" id="startBtn">
+                  <button name="start" class="btn-container__button btn-container__button--is-visible" id="startBtn2">
                     Start
                   </button>
-                  <button name="next" class="btn-container__button" id="nextBtn">
+                  <button name="next" class="btn-container__button" id="nextBtn2">
                     Next
                   </button>
-                  <button name="retry" class="btn-container__button" id="retryBtn">
+                  <button name="retry" class="btn-container__button" id="retryBtn2">
                     Retry
                   </button>
-                </div>
               </div>
             </div>
           </section>
@@ -89,27 +81,23 @@
               <label for="tabbed3" class="tabbed-panel__title__label">Parks and Rec</label>
             </h1>
             <div class="tabbed-panel__content">
-              <div class="questions">
+              <div class="questions" id="questions3">
                 <p class="questions__intro">Parks and Rec Quiz</p>
                 <p class="questions__intro">Click START to begin the quiz!</p>
               </div>
-              <div class="btn-container">
-                <div class="btn-container__left">
-                  <button name="back" class="btn-container__button" id="backBtn">
+              <div class="btn-container" id="buttonSet3">
+                  <button name="back" class="btn-container__button" id="backBtn3">
                     Back
                   </button>
-                </div>
-                <div class="btn-container__right">
-                  <button name="start" class="btn-container__button btn-container__button--is-visible" id="startBtn">
+                  <button name="start" class="btn-container__button btn-container__button--is-visible" id="startBtn3">
                     Start
                   </button>
-                  <button name="next" class="btn-container__button" id="nextBtn">
+                  <button name="next" class="btn-container__button" id="nextBtn3">
                     Next
                   </button>
-                  <button name="retry" class="btn-container__button" id="retryBtn">
+                  <button name="retry" class="btn-container__button" id="retryBtn3">
                     Retry
                   </button>
-                </div>
               </div>
             </div>
           </section>
@@ -122,30 +110,39 @@
               <label for="tabbed4" class="tabbed-panel__title__label tabbed-panel__title__label--last">X-Files</label>
             </h1>
             <div class="tabbed-panel__content tabbed-panel__content--last">
-              <div class="questions">
+              <div class="questions" id="questions4">
                 <p class="questions__intro">X-Files Quiz</p>
                 <p class="questions__intro">Click START to begin the quiz!</p>
               </div>
-              <div class="btn-container">
-                <div class="btn-container__left">
-                  <button name="back" class="btn-container__button" id="backBtn">
+              <div class="btn-container" id="buttonSet4">
+                  <button name="back" class="btn-container__button" id="backBtn4">
                     Back
                   </button>
-                </div>
-                <div class="btn-container__right">
-                  <button name="start" class="btn-container__button btn-container__button--is-visible" id="startBtn">
+                  <button name="start" class="btn-container__button btn-container__button--is-visible" id="startBtn4">
                     Start
                   </button>
-                  <button name="next" class="btn-container__button" id="nextBtn">
+                  <button name="next" class="btn-container__button" id="nextBtn4">
                     Next
                   </button>
-                  <button name="retry" class="btn-container__button" id="retryBtn">
+                  <button name="retry" class="btn-container__button" id="retryBtn4">
                     Retry
                   </button>
-                </div>
               </div>
             </div>
           </section>
+        </div>
+      </div>
+    </div>
+    <div class="modal" id="modal">
+      <div class="modal__inner">
+        <div class="modal__close">X</div>
+        <div class="modal__description">
+          <p>If you switch to a different quiz you will lose your current progress on this quiz.</p>
+          <p>Do you still want to switch?</p>
+        </div>
+        <div class="btn-container">
+          <button name="yes" class="btn-container__button btn-container__button--is-visible" id="yes">Yes</button>
+          <button name="No" class="btn-container__button btn-container__button--is-visible" id="no">No</button>
         </div>
       </div>
     </div>
