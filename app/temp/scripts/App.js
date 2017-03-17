@@ -434,8 +434,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 // Selects all radio buttons with specified name and checks if one is selected
-function radioChecked(setNum) {
-  var radios = document.getElementsByName("choices" + setNum);
+function radioChecked() {
+  var radios = document.getElementsByName('choices');
   for (var i = 0; i < radios.length; i++) {
     if (radios[i].checked) {
       return true;
@@ -444,7 +444,7 @@ function radioChecked(setNum) {
   return false;
 }
 
-exports.default = radioChecked;
+exports.radioChecked = radioChecked;
 
 /***/ }),
 /* 7 */
@@ -457,16 +457,16 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 // Displays a message asking user to choose an answer if one is not selected
-function validation(setNum) {
-  var msgExists = document.getElementById('msg' + setNum);
+function validation(quizNum) {
+  var msgExists = document.getElementById('msg-' + quizNum);
   // Checks if the message already exists so it doesn't display multiple messages
   if (!document.body.contains(msgExists)) {
     var msgEl = document.createElement('div'),
         msg = document.createTextNode('Please choose an answer!'),
-        position = document.getElementById('buttonSet' + setNum),
-        radios = document.getElementsByName('choices' + setNum);
+        position = document.getElementById('buttons-' + quizNum),
+        radios = document.getElementsByName('choices');
 
-    msgEl.id = 'msg' + setNum;
+    msgEl.id = 'msg-' + quizNum;
     msgEl.classList.add('btn-container__msg');
     msgEl.appendChild(msg);
     position.appendChild(msgEl);
@@ -474,15 +474,15 @@ function validation(setNum) {
     // Watches radio buttons for change and calls removeValidationMsg to remove the message
     for (var i = 0; i < radios.length; i++) {
       radios[i].addEventListener('change', function (e) {
-        removeValidationMsg(setNum);
+        removeValidationMsg(quizNum);
       }, false);
     }
   }
 }
 
 // Removes message when an answer is selected
-function removeValidationMsg(setNum) {
-  var removeMsgEl = document.getElementById('msg' + setNum);
+function removeValidationMsg(quizNum) {
+  var removeMsgEl = document.getElementById('msg-' + quizNum);
   var containerEl = removeMsgEl.parentNode;
   containerEl.removeChild(removeMsgEl);
 }
@@ -505,36 +505,28 @@ module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,"
     + alias4(((helper = (helper = helpers.quizLength || (depth0 != null ? depth0.quizLength : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"quizLength","hash":{},"data":data}) : helper)))
     + "</h2>\r\n\r\n<p class=\"questions__question-text\">"
     + alias4(((helper = (helper = helpers.question || (depth0 != null ? depth0.question : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"question","hash":{},"data":data}) : helper)))
-    + "</p>\r\n\r\n<p class=\"questions__question-choice\">\r\n  <input type=\"radio\" name=\"choices"
-    + alias4(((helper = (helper = helpers.setNum || (depth0 != null ? depth0.setNum : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"setNum","hash":{},"data":data}) : helper)))
-    + "\" id=\"choice"
-    + alias4(((helper = (helper = helpers.setNum || (depth0 != null ? depth0.setNum : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"setNum","hash":{},"data":data}) : helper)))
+    + "</p>\r\n\r\n<p class=\"questions__question-choice\">\r\n  <input type=\"radio\" name=\"choices\" id=\"choice"
+    + alias4(((helper = (helper = helpers.quizNum || (depth0 != null ? depth0.quizNum : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"quizNum","hash":{},"data":data}) : helper)))
     + "-1\" value=\"0\" />\r\n  <label for=\"choice"
-    + alias4(((helper = (helper = helpers.setNum || (depth0 != null ? depth0.setNum : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"setNum","hash":{},"data":data}) : helper)))
+    + alias4(((helper = (helper = helpers.quizNum || (depth0 != null ? depth0.quizNum : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"quizNum","hash":{},"data":data}) : helper)))
     + "-1\" class=\"questions__question-choice--label\">"
     + alias4(alias5(((stack1 = (depth0 != null ? depth0.choices : depth0)) != null ? stack1["0"] : stack1), depth0))
-    + "</label>\r\n</p>\r\n<p class=\"questions__question-choice\">\r\n  <input type=\"radio\" name=\"choices"
-    + alias4(((helper = (helper = helpers.setNum || (depth0 != null ? depth0.setNum : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"setNum","hash":{},"data":data}) : helper)))
-    + "\" id=\"choice"
-    + alias4(((helper = (helper = helpers.setNum || (depth0 != null ? depth0.setNum : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"setNum","hash":{},"data":data}) : helper)))
+    + "</label>\r\n</p>\r\n<p class=\"questions__question-choice\">\r\n  <input type=\"radio\" name=\"choices\" id=\"choice"
+    + alias4(((helper = (helper = helpers.quizNum || (depth0 != null ? depth0.quizNum : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"quizNum","hash":{},"data":data}) : helper)))
     + "-2\" value=\"1\" />\r\n  <label for=\"choice"
-    + alias4(((helper = (helper = helpers.setNum || (depth0 != null ? depth0.setNum : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"setNum","hash":{},"data":data}) : helper)))
+    + alias4(((helper = (helper = helpers.quizNum || (depth0 != null ? depth0.quizNum : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"quizNum","hash":{},"data":data}) : helper)))
     + "-2\" class=\"questions__question-choice--label\">"
     + alias4(alias5(((stack1 = (depth0 != null ? depth0.choices : depth0)) != null ? stack1["1"] : stack1), depth0))
-    + "</label>\r\n</p>\r\n<p class=\"questions__question-choice\">\r\n  <input type=\"radio\" name=\"choices"
-    + alias4(((helper = (helper = helpers.setNum || (depth0 != null ? depth0.setNum : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"setNum","hash":{},"data":data}) : helper)))
-    + "\" id=\"choice"
-    + alias4(((helper = (helper = helpers.setNum || (depth0 != null ? depth0.setNum : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"setNum","hash":{},"data":data}) : helper)))
+    + "</label>\r\n</p>\r\n<p class=\"questions__question-choice\">\r\n  <input type=\"radio\" name=\"choices\" id=\"choice"
+    + alias4(((helper = (helper = helpers.quizNum || (depth0 != null ? depth0.quizNum : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"quizNum","hash":{},"data":data}) : helper)))
     + "-3\" value=\"2\" />\r\n  <label for=\"choice"
-    + alias4(((helper = (helper = helpers.setNum || (depth0 != null ? depth0.setNum : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"setNum","hash":{},"data":data}) : helper)))
+    + alias4(((helper = (helper = helpers.quizNum || (depth0 != null ? depth0.quizNum : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"quizNum","hash":{},"data":data}) : helper)))
     + "-3\" class=\"questions__question-choice--label\">"
     + alias4(alias5(((stack1 = (depth0 != null ? depth0.choices : depth0)) != null ? stack1["2"] : stack1), depth0))
-    + "</label>\r\n</p>\r\n<p class=\"questions__question-choice\">\r\n  <input type=\"radio\" name=\"choices"
-    + alias4(((helper = (helper = helpers.setNum || (depth0 != null ? depth0.setNum : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"setNum","hash":{},"data":data}) : helper)))
-    + "\" id=\"choice"
-    + alias4(((helper = (helper = helpers.setNum || (depth0 != null ? depth0.setNum : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"setNum","hash":{},"data":data}) : helper)))
+    + "</label>\r\n</p>\r\n<p class=\"questions__question-choice\">\r\n  <input type=\"radio\" name=\"choices\" id=\"choice"
+    + alias4(((helper = (helper = helpers.quizNum || (depth0 != null ? depth0.quizNum : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"quizNum","hash":{},"data":data}) : helper)))
     + "-4\" value=\"3\" />\r\n  <label for=\"choice"
-    + alias4(((helper = (helper = helpers.setNum || (depth0 != null ? depth0.setNum : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"setNum","hash":{},"data":data}) : helper)))
+    + alias4(((helper = (helper = helpers.quizNum || (depth0 != null ? depth0.quizNum : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"quizNum","hash":{},"data":data}) : helper)))
     + "-4\" class=\"questions__question-choice--label\">"
     + alias4(alias5(((stack1 = (depth0 != null ? depth0.choices : depth0)) != null ? stack1["3"] : stack1), depth0))
     + "</label>\r\n</p>\r\n";
@@ -1511,222 +1503,198 @@ var _buffy = __webpack_require__(4);
 
 var _radioChecked = __webpack_require__(6);
 
-var _radioChecked2 = _interopRequireDefault(_radioChecked);
-
 var _validation = __webpack_require__(7);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var choicesTemplate = __webpack_require__(8);
 var scoreTemplate = __webpack_require__(9);
 
-var questionSet = _got.questionSet,
-    quizLength = questionSet.length - 1,
-    answerSet1 = [],
-    answerSet2 = [],
-    answerSet3 = [],
-    answerSet4 = [],
-    answerSet = answerSet1,
-    setNum = '1',
-    q = 0,
+var questionSet = [[_got.questionSet], [_buffy.questionSet]],
+    answerSet = [],
+    q0 = 0,
+    q1 = 0,
+    q2 = 0,
+    q3 = 0,
+    q = q1,
+    quizNum = 0,
+    quizIndex = 0,
+    qSet,
+    quizLength,
+    q,
+    aSet,
     tabs = document.querySelector('.tabbed-panel'),
-    modal = document.getElementById('modal');
+    startBtn = document.querySelector('div#buttons-' + quizNum + ' button.start'),
+    backBtn = document.querySelector('div#buttons-' + quizNum + ' button.back'),
+    nextBtn = document.querySelector('div#buttons-' + quizNum + ' button.next'),
+    retryBtn = document.querySelector('div#buttons-' + quizNum + ' button.retry');
+
+startBtn.addEventListener('click', startQuiz, false);
+backBtn.addEventListener('click', prevQuestion, false);
+nextBtn.addEventListener('click', nextQuestion, false);
+retryBtn.addEventListener('click', reloadQuiz, false);
 
 tabs.addEventListener('change', function (e) {
-	var target = e.target;
-	openModal();
-
-	var yesBtn = document.getElementById('yes'),
-	    noBtn = document.getElementById('no');
-
-	yesBtn.addEventListener('click', function (e) {
-		switchQuiz(target);
-	}, false);
-
-	noBtn.addEventListener('click', function (e) {
-		returnToQuiz(target);
-	}, false);
-
-	function switchQuiz(target) {
-		closeModal();
-		if (target.id === 'tabbed1') {
-			document.getElementById('tabbed1').checked;
-			questionSet = _got.questionSet;
-			quizLength = questionSet.length - 1;
-			answerSet = answerSet1;
-			q = answerSet.length;
-			setNum = '1';
-			buttonEvents(setNum);
-		} else if (target.id === 'tabbed2') {
-			document.getElementById('tabbed2').checked;
-			questionSet = _buffy.questionSet;
-			quizLength = questionSet.length - 1;
-			answerSet = answerSet2;
-			q = answerSet.length;
-			setNum = '2';
-			buttonEvents(setNum);
-		}
-	}
-
-	function returnToQuiz(target) {
-		closeModal();
-		target.id.checked;
-	}
+  var target = e.target;
+  if (target.id === 'tabbed0') {
+    quizNum = 0;
+  } else if (target.id === 'tabbed1') {
+    quizNum = 1;
+  } else if (target.id === 'tabbed2') {
+    quizNum = 2;
+  } else if (target.id === 'tabbed3') {
+    quizNum = 3;
+  }
+  initializeQuiz(quizNum);
 });
 
-buttonEvents(setNum);
+initializeQuiz(quizNum);
 
-function openModal() {
-	modal.classList.add('modal--is-visible');
+function initializeQuiz(quizNum) {
+  if (quizNum === 0) {
+    q = q0;
+  } else if (quizNum === 1) {
+    q = q1;
+  } else if (quizNum === 2) {
+    q = q2;
+  } else if (quizNum === 3) {
+    q = q3;
+  }
+  qSet = questionSet[quizNum][quizIndex];
+  quizLength = qSet.length;
+  q = qArr[quizNum];
+  aSet = answerSet;
 }
 
-function closeModal() {
-	modal.classList.remove('modal--is-visible');
-}
+// function buttonEvents(quizNum) {
+//   var startBtn = 
+// 	}, false);
+// }
 
-function buttonEvents(setNum) {
+function displayNavigationButtons(q) {
 
-	var buttonSet = document.getElementById('buttonSet' + setNum);
-	buttonSet.addEventListener('click', function (e) {
-		var targetId = e.target.id;
-		if (targetId.includes('startBtn')) {
-			startQuiz();
-		} else if (targetId.includes('nextBtn')) {
-			nextQuestion();
-		} else if (targetId.includes('backBtn')) {
-			prevQuestion();
-		} else if (targetId.includes('retryBtn')) {
-			reloadQuiz();
-		}
-	});
-}
+  var visibleClass = 'btn-container__button--is-visible';
 
-function displayNavigationButtons(q, setNum) {
-	var visibleClass = 'btn-container__button--is-visible',
-	    startBtn = document.getElementById('startBtn' + setNum),
-	    backBtn = document.getElementById('backBtn' + setNum),
-	    nextBtn = document.getElementById('nextBtn' + setNum),
-	    retryBtn = document.getElementById('retryBtn' + setNum);
-
-	if (q === 0) {
-		startBtn.classList.remove(visibleClass);
-		backBtn.classList.remove(visibleClass);
-		retryBtn.classList.remove(visibleClass);
-		nextBtn.classList.add(visibleClass);
-	} else if (q === 1) {
-		backBtn.classList.add(visibleClass);
-	} else if (q > quizLength) {
-		backBtn.classList.remove(visibleClass);
-		nextBtn.classList.remove(visibleClass);
-		retryBtn.classList.add(visibleClass);
-	}
+  if (q === 0) {
+    startBtn.classList.remove(visibleClass);
+    backBtn.classList.remove(visibleClass);
+    retryBtn.classList.remove(visibleClass);
+    nextBtn.classList.add(visibleClass);
+  } else if (q === 1) {
+    backBtn.classList.add(visibleClass);
+  } else if (q > quizLength) {
+    backBtn.classList.remove(visibleClass);
+    nextBtn.classList.remove(visibleClass);
+    retryBtn.classList.add(visibleClass);
+  }
 }
 
 function startQuiz() {
-	displayNavigationButtons(q, setNum);
-	insertCurrentQuestion(q, setNum);
+  displayNavigationButtons(q);
+  insertCurrentQuestion(quizNum, q, qSet, aSet);
 }
 
 function nextQuestion() {
-	if ((0, _radioChecked2.default)(setNum)) {
-		trackAnswers(q, setNum);
-		if (q !== quizLength) {
-			q++;
-			displayNavigationButtons(q, setNum);
-			insertCurrentQuestion(q, setNum);
-		} else {
-			completeQuiz();
-		}
-	} else {
-		(0, _validation.validation)(setNum);
-	}
+  if ((0, _radioChecked.radioChecked)()) {
+    trackAnswers(quizNum, q, qSet, aSet);
+    if (q !== quizLength) {
+      q++;
+      displayNavigationButtons(q);
+      insertCurrentQuestion(quizNum, q, qSet, aSet);
+    } else {
+      completeQuiz();
+    }
+  } else {
+    (0, _validation.validation)(quizNum);
+  }
 }
 
 function prevQuestion() {
-	var validationMsg = document.getElementById('msg' + setNum);
-	if (document.body.contains(validationMsg)) {
-		(0, _validation.removeValidationMsg)(setNum);
-	}
-	q--;
-	displayNavigationButtons(q, setNum);
-	insertCurrentQuestion(q, setNum);
+  var validationMsg = document.getElementById('msg-' + quizNum);
+  if (document.body.contains(validationMsg)) {
+    (0, _validation.removeValidationMsg)(quizNum);
+  }
+  q--;
+  displayNavigationButtons(q, quizNum);
+  insertCurrentQuestion(quizNum, q, qSet, aSet);
 }
 
 function completeQuiz() {
-	q++;
-	displayNavigationButtons(q, setNum);
-	finalScore(setNum, answerSet);
+  q++;
+  displayNavigationButtons(q);
+  finalScore(quizNum, answerSet);
 }
 
 function reloadQuiz() {
-	answerSet = [];
-	q = 0;
-	displayNavigationButtons(q, setNum);
-	insertCurrentQuestion(q, setNum);
+  answerSet = [];
+  q = 0;
+  displayNavigationButtons(q);
+  insertCurrentQuestion(quizNum, q, qSet, aSet);
 }
 
-function displayWarning() {}
+function storeQuestionCount(quizNum, q) {
+  qArr[quizNum] = q;
+}
 
 // Inserts the current question, determined by counter q
-function insertCurrentQuestion(q, setNum) {
-	var qText = document.getElementById('questions' + setNum),
-	    context = {
-		qNum: q + 1,
-		quizLength: questionSet.length,
-		question: questionSet[q].question,
-		setNum: setNum,
-		choices: questionSet[q].choices
-	},
-	    displayChoices = choicesTemplate(context);
+function insertCurrentQuestion(quizNum, q, qSet, aSet) {
+  var qText = document.getElementById('questions-' + quizNum),
+      context = {
+    qNum: q + 1,
+    quizLength: qSet.length,
+    question: qSet[q].question,
+    quizNum: quizNum,
+    choices: qSet[q].choices
+  },
+      displayChoices = choicesTemplate(context);
 
-	qText.innerHTML = displayChoices;
+  qText.innerHTML = displayChoices;
 
-	// If the user goes back a question, checks the radio they previously selected
-	if (answerSet[q] !== undefined) {
-		document.querySelector('input[value="' + answerSet[q].answer + '"]').checked = true;
-	}
+  // If the user goes back a question, checks the radio they previously selected
+  if (aSet !== undefined && aSet[q] !== undefined) {
+    document.querySelector('input[value="' + aSet[q].answer + '"]').checked = true;
+  }
 }
 
 // Adds selected answer to answerTracker array for scoring
-function trackAnswers(q, setNum) {
-	var currentAnswer = {},
-	    selectedAnswer = document.querySelector('[name="choices' + setNum + '"]:checked').value,
-	    currentChoice = questionSet[q].choices[selectedAnswer],
-	    correctAnswer = questionSet[q].correctAnswer.toString(),
-	    qNum = q + 1;
+function trackAnswers(quizNum, q, qSet, aSet) {
+  var currentAnswer = {},
+      selectedAnswer = document.querySelector('[name="choices"]:checked').value,
+      currentChoice = qSet[q].choices[selectedAnswer],
+      correctAnswer = qSet[q].correctAnswer.toString(),
+      qNum = q + 1;
 
-	currentAnswer.answer = selectedAnswer;
-	currentAnswer.choice = currentChoice;
-	if (selectedAnswer === correctAnswer) {
-		currentAnswer.correct = true;
-	} else {
-		currentAnswer.correct = false;
-	}
-	currentAnswer.questionNumber = qNum;
-	answerSet[q] = currentAnswer;
-	console.log(answerSet);
+  currentAnswer.answer = selectedAnswer;
+  currentAnswer.choice = currentChoice;
+
+  if (selectedAnswer === correctAnswer) {
+    currentAnswer.correct = true;
+  } else {
+    currentAnswer.correct = false;
+  }
+  currentAnswer.questionNumber = qNum;
+  aSet.push(currentAnswer);
+  console.log(aSet);
 }
 
 // Calculates and displays final score with chosen answers
-function finalScore(setNum, answerSet) {
-	var scoreText = document.getElementById('questions' + setNum),
-	    scoreCounter = 0,
-	    context,
-	    displayScore;
+function finalScore(quizNum, aSet) {
+  var scoreText = document.getElementById('questions-' + quizNum),
+      scoreCounter = 0,
+      context,
+      displayScore;
 
-	for (var i = 0; i < answerSet.length; i++) {
-		if (answerSet[i].correct) {
-			scoreCounter += 1;
-		}
-	}
+  for (var i = 0; i < aSet.length; i++) {
+    if (aSet[i].correct) {
+      scoreCounter += 1;
+    }
+  }
 
-	context = {
-		numberCorrect: scoreCounter,
-		quizLength: answerSet.length,
-		answers: answerSet
-	};
-	displayScore = scoreTemplate(context);
-	scoreText.innerHTML = displayScore;
+  context = {
+    numberCorrect: scoreCounter,
+    quizLength: aSet.length,
+    answers: aSet
+  };
+  displayScore = scoreTemplate(context);
+  scoreText.innerHTML = displayScore;
 }
 
 /***/ })
