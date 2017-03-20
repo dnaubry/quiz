@@ -1,191 +1,150 @@
-import { questionSet as questionSet1 } from './data/got.js';
-import { questionSet as questionSet2 } from './data/buffy.js';
+import { questionSet as questionSet0 } from './data/got';
+import { questionSet as questionSet1 } from './data/buffy';
+import { questionSet as questionSet2 } from './data/parks';
+import { questionSet as questionSet3 } from './data/twinpeaks'; 
+import { quizzes } from './data/quizzes';
+import { buttonEvents, displayButtons, resetButtonsToStart } from './modules/buttons';
 import { radioChecked } from './modules/radioChecked';
 import { validation, removeValidationMsg } from './modules/validation';
-var choicesTemplate = require('./templates/answerchoices.hbs');
-var scoreTemplate = require('./templates/finalscore.hbs');
+import { finalScore } from './modules/finalScore';
+var choicesTemplate = require('./templates/answerchoices.hbs'),
+  quizTemplate = require('./templates/startquiz.hbs');
 
-var questionSet = [[questionSet1], [questionSet2]],
-	answerSet = [],
-	q0 = 0, q1 = 0, q2 = 0, q3 = 0,
-  q = q1,
-	quizNum = 0,
-	quizIndex = 0,
-	qSet, quizLength, q, aSet,
-	tabs = document.querySelector('.tabbed-panel'),
-  startBtn = document.querySelector(`div#buttons-${quizNum} button.start`),
-	backBtn = document.querySelector(`div#buttons-${quizNum} button.back`),
-	nextBtn = document.querySelector(`div#buttons-${quizNum} button.next`),
-	retryBtn = document.querySelector(`div#buttons-${quizNum} button.retry`);
+var allQuestionSets = [questionSet0, questionSet1, questionSet2, questionSet3],
+  questionSet = allQuestionSets[0],
+  quizLength = questionSet.length - 1,
+	answers = [],
+  q = 0;
 
-startBtn.addEventListener('click', startQuiz, false);
-backBtn.addEventListener('click', prevQuestion, false);
-nextBtn.addEventListener('click', nextQuestion, false);
-retryBtn.addEventListener('click', reloadQuiz, false);
-
-tabs.addEventListener('change', function(e) {
-	var target = e.target;
-		if (target.id === 'tabbed0') {
-			quizNum = 0;
-		} else if (target.id === 'tabbed1') {
-			quizNum = 1;
-		} else if (target.id === 'tabbed2') {
-			quizNum = 2;
-		} else if (target.id === 'tabbed3') {
-			quizNum = 3;
-		}
-		initializeQuiz(quizNum);
-	});
-
-	initializeQuiz(quizNum);
-
-	function initializeQuiz(quizNum) {
-    if (quizNum === 0) {
-      q = q0;
-    } else if (quizNum === 1) {
-      q = q1;
-    } else if (quizNum === 2) {
-      q = q2;
-    } else if (quizNum === 3) {
-      q = q3;
-    }
-		qSet = questionSet[quizNum][quizIndex];
-		quizLength = qSet.length;
-		q = qArr[quizNum];
-		aSet = answerSet;
-	}
-
-// function buttonEvents(quizNum) {
-//   var startBtn = 
-// 	}, false);
-// }
-
-function displayNavigationButtons(q) {
-
-		var visibleClass = 'btn-container__button--is-visible';
-		
-		if (q === 0) {
-			startBtn.classList.remove(visibleClass);
-			backBtn.classList.remove(visibleClass);
-			retryBtn.classList.remove(visibleClass);
-			nextBtn.classList.add(visibleClass);
-		} else if (q === 1) {
-			backBtn.classList.add(visibleClass);
-		} else if (q > quizLength) {
-			backBtn.classList.remove(visibleClass);
-			nextBtn.classList.remove(visibleClass);
-			retryBtn.classList.add(visibleClass);
-		}
-	}
+displayQuiz();
+buttonEvents(startQuiz, prevQuestion, nextQuestion, reloadQuiz);
 
 function startQuiz() {
-  displayNavigationButtons(q);
-  insertCurrentQuestion(quizNum, q, qSet, aSet);
+  displayButtons(q, quizLength);
+  insertCurrentQuestion(q);
 }
 
 function nextQuestion() {
   if (radioChecked()) {
-    trackAnswers(quizNum, q, qSet, aSet);
+    storeAnswer(q);
     if (q !== quizLength) {
       q++;
-      displayNavigationButtons(q);
-      insertCurrentQuestion(quizNum, q, qSet, aSet);
+      displayButtons(q, quizLength);
+      insertCurrentQuestion(q);
     } else {
       completeQuiz();
     }
   } else {
-    validation(quizNum);
+    validation();
   }
 }
 
 function prevQuestion() {
-    var validationMsg = document.getElementById(`msg-${quizNum}`);
+    var validationMsg = document.getElementById('validationMsg');
     if(document.body.contains(validationMsg)) {
-        removeValidationMsg(quizNum);
+        removeValidationMsg();
     }
     q--;
-    displayNavigationButtons(q, quizNum);
-    insertCurrentQuestion(quizNum, q, qSet, aSet);
+    displayButtons(q, quizLength);
+    insertCurrentQuestion(q);
 }
 
 function completeQuiz() {
   q++;
-  displayNavigationButtons(q);
-  finalScore(quizNum, answerSet);
+  displayButtons(q, quizLength);
+  finalScore(answers, questionSet);
 }
 
 function reloadQuiz() {
-	answerSet = [];
+	answers = [];
 	q = 0;
-	displayNavigationButtons(q);
-	insertCurrentQuestion(quizNum, q, qSet, aSet);
+	displayButtons(q, quizLength);
+	insertCurrentQuestion(q);
 }
 
-function storeQuestionCount(quizNum, q) {
-	qArr[quizNum] = q;
+function displayQuiz() {
+    var quizLinks = document.getElementsByTagName('a'),
+      quizLinks = Array.from(quizLinks),
+      quizText = document.querySelector('.main-section__content'),
+      backgroundImage = document.getElementById('quiz-0__image'),
+      activeLink = document.querySelector('.active');
+
+      for (var i = 0; i < quizLinks.length; i++) {
+        quizLinks[i].addEventListener('click', initiateQuiz, false);
+        quizLinks[i].addEventListener('touchend', initiateQuiz, false);
+      }
+
+    function initiateQuiz(e) {
+        var targetId = e.target.id,
+        quizNum,
+        context,
+        displayQuizText;
+
+        for (var i = 0; i < quizLinks.length; i++) {
+          quizLinks[i].classList.remove('active');
+        }
+
+        if (targetId === 'quiz-0') {
+          quizNum = 0;
+        } else if (targetId === 'quiz-1') {
+          quizNum = 1;
+        } else if (targetId === 'quiz-2') {
+          quizNum = 2;
+        } else if (targetId === 'quiz-3') {
+          quizNum = 3;
+        }
+        backgroundImage.id = `quiz-${quizNum}__image`;
+        quizLinks[quizNum].classList.add('active');
+        questionSet = allQuestionSets[quizNum];
+        quizLength = questionSet.length - 1;
+        answers = [];
+        q = 0;
+        context = {
+            quizName: quizzes[quizNum]
+        };
+        displayQuizText = quizTemplate(context);
+        quizText.innerHTML = displayQuizText;
+        resetButtonsToStart();
+        e.preventDefault(); 
+    }
 }
 
 // Inserts the current question, determined by counter q
-function insertCurrentQuestion(quizNum, q, qSet, aSet) {
-  var qText = document.getElementById(`questions-${quizNum}`),
+function insertCurrentQuestion(q) {
+  var qText = document.querySelector('.questions'),
     context = {
       qNum: q + 1,
-      quizLength: qSet.length,
-      question: qSet[q].question,
-			quizNum: quizNum,
-      choices: qSet[q].choices
+      quizLength: questionSet.length,
+      question: questionSet[q].question,
+      choices: questionSet[q].choices
     },
     displayChoices = choicesTemplate(context);
 
   qText.innerHTML = displayChoices;
 
     // If the user goes back a question, checks the radio they previously selected
-  if ((aSet !== undefined) && (aSet[q] !== undefined)) {
-    document.querySelector(`input[value="${aSet[q].answer}"]`).checked = true;
+  if (answers[q] !== undefined) {
+    document.querySelector(`input[value="${answers[q].answer}"]`).checked = true;
   }
 }
 
-// Adds selected answer to answerTracker array for scoring
-function trackAnswers(quizNum, q, qSet, aSet) {
+// Adds selected answer to answers array for scoring
+function storeAnswer(q) {
   var currentAnswer = {},
     selectedAnswer = document.querySelector('[name="choices"]:checked').value,
-    currentChoice = qSet[q].choices[selectedAnswer],
-    correctAnswer = (qSet[q].correctAnswer).toString(),
+    currentChoice = questionSet[q].choices[selectedAnswer],
+    correctAnswer = (questionSet[q].correctAnswer).toString(),
     qNum = q + 1;
 
   currentAnswer.answer = selectedAnswer;
   currentAnswer.choice = currentChoice;
+  currentAnswer.questionNumber = qNum;
 
   if (selectedAnswer === correctAnswer) {
     currentAnswer.correct = true;
   } else {
     currentAnswer.correct = false;
   }
-  currentAnswer.questionNumber = qNum;
-  aSet.push(currentAnswer);
-  console.log(aSet);
+  answers[q] = currentAnswer;
 
 }
-
-// Calculates and displays final score with chosen answers
-function finalScore (quizNum, aSet) {
-  var scoreText = document.getElementById(`questions-${quizNum}`),
-    scoreCounter = 0,
-    context,
-    displayScore;
-
-  for (var i = 0; i < aSet.length; i++) {
-    if (aSet[i].correct) {
-      scoreCounter += 1;
-    }
-  }
-
-  context = {
-    numberCorrect: scoreCounter,
-    quizLength: aSet.length,
-    answers: aSet
-  };
-  displayScore = scoreTemplate(context);
-  scoreText.innerHTML = displayScore;
-}
-

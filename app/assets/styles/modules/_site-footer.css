@@ -1,4 +1,4 @@
 .site-footer {
-  background-color: #ef9a9a;
-  padding: 10px;
+  background-color: rgba($mainRed, .95);
+  padding: 0 10px;
 }

@@ -3,11 +3,10 @@
 @import "base/_variables";
 @import "base/_mixins";
 @import "base/_global";
+@import "modules/_site-nav";
 @import "modules/_wrapper";
 @import "modules/_main-section";
-@import "modules/_tabbed-panel";
 @import "modules/_btn-container";
 @import "modules/_site-header";
 @import "modules/_questions";
 @import "modules/_site-footer";
-@import "modules/_modal";

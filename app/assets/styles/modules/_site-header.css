@@ -1,25 +1,11 @@
 .site-header {
-  margin: 0 0 0.5rem;
-  padding: 1.5rem 1rem 1.8rem;
+  margin: 0 0 1.5rem;
+  padding: 1.5rem 1rem 1rem;
   overflow: hidden;
-  position: relative;
 
   @mixin atSmall {
-    padding: 1.5rem 2.5rem 2.5rem;
+    padding: 1.5rem 2.5rem 1rem;
   }
-
-  /*&::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    transform: skewY(3deg);
-    background-color: $mainRed;
-    transform-origin: top right;
-    z-index: -1;
-  }*/
 
   &__title {
     font-family: 'Cabin', sans-serif;

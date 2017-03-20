@@ -5,19 +5,17 @@
     margin: 0px auto;
     padding: 10px 20px;
 
-    &__intro {
-      text-align: center;
-    }
 
     &__text {
       text-align: center;
       font-size: 1.5em;
     }
 
-    &__question-title {
+    &__question-count {
       font-size: 1.1rem;
-      word-spacing: .4rem;
+      word-spacing: .3rem;
       border-bottom: .5px solid #000;
+      margin-top: 0;
 
       @mixin atSmall {
         font-size: 1.5rem;
@@ -58,7 +56,7 @@
       }
 
       &__intro {
-        word-spacing: .5rem;
+        word-spacing: .25rem;
         border-bottom: .5px solid #000;
       }
 

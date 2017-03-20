@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 26);
+/******/ 	return __webpack_require__(__webpack_require__.s = 32);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -259,6 +259,15 @@ module.exports = exports['default'];
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
+// Create a simple path alias to allow browserify to resolve
+// the runtime on a supported path.
+module.exports = __webpack_require__(16)['default'];
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 
 
@@ -274,11 +283,11 @@ var _exception = __webpack_require__(1);
 
 var _exception2 = _interopRequireDefault(_exception);
 
-var _helpers = __webpack_require__(13);
+var _helpers = __webpack_require__(19);
 
-var _decorators = __webpack_require__(11);
+var _decorators = __webpack_require__(17);
 
-var _logger = __webpack_require__(21);
+var _logger = __webpack_require__(27);
 
 var _logger2 = _interopRequireDefault(_logger);
 
@@ -367,15 +376,6 @@ exports.logger = _logger2['default'];
 
 
 /***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// Create a simple path alias to allow browserify to resolve
-// the runtime on a supported path.
-module.exports = __webpack_require__(10)['default'];
-
-
-/***/ }),
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -433,6 +433,152 @@ var questionSet = exports.questionSet = [{
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var questionSet = exports.questionSet = [{
+  question: 'Question 1?',
+  choices: ['A', 'B', 'C', 'D'],
+  correctAnswer: 0
+}, {
+  question: 'Question 2?',
+  choices: ['A"', 'B', 'C', 'D'],
+  correctAnswer: 0
+}, {
+  question: 'Question 3?',
+  choices: ['A', 'B', 'C', 'D'],
+  correctAnswer: 0
+}];
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var quizzes = exports.quizzes = ["Game of Thrones", "Buffy the Vampire Slayer", "Parks and Recreation", "Twin Peaks"];
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var questionSet = exports.questionSet = [{
+  question: 'Question 1?',
+  choices: ['A', 'B', 'C', 'D'],
+  correctAnswer: 0
+}, {
+  question: 'Question 2?',
+  choices: ['A"', 'B', 'C', 'D'],
+  correctAnswer: 0
+}, {
+  question: 'Question 3?',
+  choices: ['A', 'B', 'C', 'D'],
+  correctAnswer: 0
+}];
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var startBtn = document.querySelector('.start'),
+    backBtn = document.querySelector('.back'),
+    nextBtn = document.querySelector('.next'),
+    retryBtn = document.querySelector('.retry'),
+    visibleClass = 'btn-container__button--is-visible';
+
+function buttonEvents(startQuiz, prevQuestion, nextQuestion, reloadQuiz) {
+  startBtn.addEventListener('click', startQuiz, false);
+  backBtn.addEventListener('click', prevQuestion, false);
+  nextBtn.addEventListener('click', nextQuestion, false);
+  retryBtn.addEventListener('click', reloadQuiz, false);
+}
+
+function displayButtons(q, quizLength) {
+
+  if (q === 0) {
+    startBtn.classList.remove(visibleClass);
+    backBtn.classList.remove(visibleClass);
+    retryBtn.classList.remove(visibleClass);
+    nextBtn.classList.add(visibleClass);
+  } else if (q === 1) {
+    backBtn.classList.add(visibleClass);
+  } else if (q > quizLength) {
+    backBtn.classList.remove(visibleClass);
+    nextBtn.classList.remove(visibleClass);
+    retryBtn.classList.add(visibleClass);
+  }
+}
+
+function resetButtonsToStart() {
+  backBtn.classList.remove(visibleClass);
+  retryBtn.classList.remove(visibleClass);
+  nextBtn.classList.remove(visibleClass);
+  startBtn.classList.add(visibleClass);
+}
+
+exports.buttonEvents = buttonEvents;
+exports.displayButtons = displayButtons;
+exports.resetButtonsToStart = resetButtonsToStart;
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var scoreTemplate = __webpack_require__(15);
+
+// Calculates and displays final score with chosen answers
+function finalScore(answers, questionSet) {
+  var scoreText = document.querySelector('.questions'),
+      scoreCounter = 0,
+      context,
+      displayScore;
+
+  for (var i = 0; i < answers.length; i++) {
+    if (answers[i].correct) {
+      scoreCounter += 1;
+    }
+  }
+
+  context = {
+    numberCorrect: scoreCounter,
+    quizLength: questionSet.length,
+    answers: answers
+  };
+  displayScore = scoreTemplate(context);
+  scoreText.innerHTML = displayScore;
+}
+
+exports.finalScore = finalScore;
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 // Selects all radio buttons with specified name and checks if one is selected
 function radioChecked() {
   var radios = document.getElementsByName('choices');
@@ -447,7 +593,7 @@ function radioChecked() {
 exports.radioChecked = radioChecked;
 
 /***/ }),
-/* 7 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -457,16 +603,16 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 // Displays a message asking user to choose an answer if one is not selected
-function validation(quizNum) {
-  var msgExists = document.getElementById('msg-' + quizNum);
+function validation() {
+  var msgExists = document.getElementById('validationMsg');
   // Checks if the message already exists so it doesn't display multiple messages
   if (!document.body.contains(msgExists)) {
     var msgEl = document.createElement('div'),
         msg = document.createTextNode('Please choose an answer!'),
-        position = document.getElementById('buttons-' + quizNum),
+        position = document.querySelector('.btn-container'),
         radios = document.getElementsByName('choices');
 
-    msgEl.id = 'msg-' + quizNum;
+    msgEl.id = 'validationMsg';
     msgEl.classList.add('btn-container__msg');
     msgEl.appendChild(msg);
     position.appendChild(msgEl);
@@ -474,15 +620,15 @@ function validation(quizNum) {
     // Watches radio buttons for change and calls removeValidationMsg to remove the message
     for (var i = 0; i < radios.length; i++) {
       radios[i].addEventListener('change', function (e) {
-        removeValidationMsg(quizNum);
+        removeValidationMsg();
       }, false);
     }
   }
 }
 
 // Removes message when an answer is selected
-function removeValidationMsg(quizNum) {
-  var removeMsgEl = document.getElementById('msg-' + quizNum);
+function removeValidationMsg() {
+  var removeMsgEl = document.getElementById('validationMsg');
   var containerEl = removeMsgEl.parentNode;
   containerEl.removeChild(removeMsgEl);
 }
@@ -491,52 +637,50 @@ exports.validation = validation;
 exports.removeValidationMsg = removeValidationMsg;
 
 /***/ }),
-/* 8 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Handlebars = __webpack_require__(3);
+var Handlebars = __webpack_require__(2);
 function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
 module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression, alias5=container.lambda;
 
-  return "<h2 class=\"questions__question-title\">"
+  return "<h2 class=\"questions__question-count\">"
     + alias4(((helper = (helper = helpers.qNum || (depth0 != null ? depth0.qNum : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"qNum","hash":{},"data":data}) : helper)))
     + " of "
     + alias4(((helper = (helper = helpers.quizLength || (depth0 != null ? depth0.quizLength : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"quizLength","hash":{},"data":data}) : helper)))
     + "</h2>\r\n\r\n<p class=\"questions__question-text\">"
     + alias4(((helper = (helper = helpers.question || (depth0 != null ? depth0.question : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"question","hash":{},"data":data}) : helper)))
-    + "</p>\r\n\r\n<p class=\"questions__question-choice\">\r\n  <input type=\"radio\" name=\"choices\" id=\"choice"
-    + alias4(((helper = (helper = helpers.quizNum || (depth0 != null ? depth0.quizNum : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"quizNum","hash":{},"data":data}) : helper)))
-    + "-1\" value=\"0\" />\r\n  <label for=\"choice"
-    + alias4(((helper = (helper = helpers.quizNum || (depth0 != null ? depth0.quizNum : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"quizNum","hash":{},"data":data}) : helper)))
-    + "-1\" class=\"questions__question-choice--label\">"
+    + "</p>\r\n\r\n<p class=\"questions__question-choice\">\r\n  <input type=\"radio\" name=\"choices\" id=\"choice-0\" value=\"0\" />\r\n  <label for=\"choice-0\" class=\"questions__question-choice--label\">"
     + alias4(alias5(((stack1 = (depth0 != null ? depth0.choices : depth0)) != null ? stack1["0"] : stack1), depth0))
-    + "</label>\r\n</p>\r\n<p class=\"questions__question-choice\">\r\n  <input type=\"radio\" name=\"choices\" id=\"choice"
-    + alias4(((helper = (helper = helpers.quizNum || (depth0 != null ? depth0.quizNum : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"quizNum","hash":{},"data":data}) : helper)))
-    + "-2\" value=\"1\" />\r\n  <label for=\"choice"
-    + alias4(((helper = (helper = helpers.quizNum || (depth0 != null ? depth0.quizNum : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"quizNum","hash":{},"data":data}) : helper)))
-    + "-2\" class=\"questions__question-choice--label\">"
+    + "</label>\r\n</p>\r\n<p class=\"questions__question-choice\">\r\n  <input type=\"radio\" name=\"choices\" id=\"choice-1\" value=\"1\" />\r\n  <label for=\"choice-1\" class=\"questions__question-choice--label\">"
     + alias4(alias5(((stack1 = (depth0 != null ? depth0.choices : depth0)) != null ? stack1["1"] : stack1), depth0))
-    + "</label>\r\n</p>\r\n<p class=\"questions__question-choice\">\r\n  <input type=\"radio\" name=\"choices\" id=\"choice"
-    + alias4(((helper = (helper = helpers.quizNum || (depth0 != null ? depth0.quizNum : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"quizNum","hash":{},"data":data}) : helper)))
-    + "-3\" value=\"2\" />\r\n  <label for=\"choice"
-    + alias4(((helper = (helper = helpers.quizNum || (depth0 != null ? depth0.quizNum : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"quizNum","hash":{},"data":data}) : helper)))
-    + "-3\" class=\"questions__question-choice--label\">"
+    + "</label>\r\n</p>\r\n<p class=\"questions__question-choice\">\r\n  <input type=\"radio\" name=\"choices\" id=\"choice-2\" value=\"2\" />\r\n  <label for=\"choice-2\" class=\"questions__question-choice--label\">"
     + alias4(alias5(((stack1 = (depth0 != null ? depth0.choices : depth0)) != null ? stack1["2"] : stack1), depth0))
-    + "</label>\r\n</p>\r\n<p class=\"questions__question-choice\">\r\n  <input type=\"radio\" name=\"choices\" id=\"choice"
-    + alias4(((helper = (helper = helpers.quizNum || (depth0 != null ? depth0.quizNum : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"quizNum","hash":{},"data":data}) : helper)))
-    + "-4\" value=\"3\" />\r\n  <label for=\"choice"
-    + alias4(((helper = (helper = helpers.quizNum || (depth0 != null ? depth0.quizNum : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"quizNum","hash":{},"data":data}) : helper)))
-    + "-4\" class=\"questions__question-choice--label\">"
+    + "</label>\r\n</p>\r\n<p class=\"questions__question-choice\">\r\n  <input type=\"radio\" name=\"choices\" id=\"choice-3\" value=\"3\" />\r\n  <label for=\"choice-3\" class=\"questions__question-choice--label\">"
     + alias4(alias5(((stack1 = (depth0 != null ? depth0.choices : depth0)) != null ? stack1["3"] : stack1), depth0))
     + "</label>\r\n</p>\r\n";
 },"useData":true});
 
 /***/ }),
-/* 9 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Handlebars = __webpack_require__(3);
+var Handlebars = __webpack_require__(2);
+function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
+module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper;
+
+  return "<p class=\"main-section__title\">"
+    + container.escapeExpression(((helper = (helper = helpers.quizName || (depth0 != null ? depth0.quizName : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"quizName","hash":{},"data":data}) : helper)))
+    + "</p>\r\n          <div class=\"questions\">\r\n            <p class=\"questions__text\">Click start to begin the quiz!</p>\r\n          </div>\r\n        </div>";
+},"useData":true});
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Handlebars = __webpack_require__(2);
 function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
 module.exports = (Handlebars["default"] || Handlebars).template({"1":function(container,depth0,helpers,partials,data) {
     var stack1, alias1=container.lambda, alias2=container.escapeExpression;
@@ -564,7 +708,7 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
 },"useData":true});
 
 /***/ }),
-/* 10 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -579,14 +723,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'd
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
 
-var _handlebarsBase = __webpack_require__(2);
+var _handlebarsBase = __webpack_require__(3);
 
 var base = _interopRequireWildcard(_handlebarsBase);
 
 // Each of these augment the Handlebars object. No need to setup here.
 // (This is done to easily share code between commonjs and browse envs)
 
-var _handlebarsSafeString = __webpack_require__(24);
+var _handlebarsSafeString = __webpack_require__(30);
 
 var _handlebarsSafeString2 = _interopRequireDefault(_handlebarsSafeString);
 
@@ -598,11 +742,11 @@ var _handlebarsUtils = __webpack_require__(0);
 
 var Utils = _interopRequireWildcard(_handlebarsUtils);
 
-var _handlebarsRuntime = __webpack_require__(23);
+var _handlebarsRuntime = __webpack_require__(29);
 
 var runtime = _interopRequireWildcard(_handlebarsRuntime);
 
-var _handlebarsNoConflict = __webpack_require__(22);
+var _handlebarsNoConflict = __webpack_require__(28);
 
 var _handlebarsNoConflict2 = _interopRequireDefault(_handlebarsNoConflict);
 
@@ -637,7 +781,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 11 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -649,7 +793,7 @@ exports.registerDefaultDecorators = registerDefaultDecorators;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var _decoratorsInline = __webpack_require__(12);
+var _decoratorsInline = __webpack_require__(18);
 
 var _decoratorsInline2 = _interopRequireDefault(_decoratorsInline);
 
@@ -660,7 +804,7 @@ function registerDefaultDecorators(instance) {
 
 
 /***/ }),
-/* 12 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -696,7 +840,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 13 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -708,31 +852,31 @@ exports.registerDefaultHelpers = registerDefaultHelpers;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var _helpersBlockHelperMissing = __webpack_require__(14);
+var _helpersBlockHelperMissing = __webpack_require__(20);
 
 var _helpersBlockHelperMissing2 = _interopRequireDefault(_helpersBlockHelperMissing);
 
-var _helpersEach = __webpack_require__(15);
+var _helpersEach = __webpack_require__(21);
 
 var _helpersEach2 = _interopRequireDefault(_helpersEach);
 
-var _helpersHelperMissing = __webpack_require__(16);
+var _helpersHelperMissing = __webpack_require__(22);
 
 var _helpersHelperMissing2 = _interopRequireDefault(_helpersHelperMissing);
 
-var _helpersIf = __webpack_require__(17);
+var _helpersIf = __webpack_require__(23);
 
 var _helpersIf2 = _interopRequireDefault(_helpersIf);
 
-var _helpersLog = __webpack_require__(18);
+var _helpersLog = __webpack_require__(24);
 
 var _helpersLog2 = _interopRequireDefault(_helpersLog);
 
-var _helpersLookup = __webpack_require__(19);
+var _helpersLookup = __webpack_require__(25);
 
 var _helpersLookup2 = _interopRequireDefault(_helpersLookup);
 
-var _helpersWith = __webpack_require__(20);
+var _helpersWith = __webpack_require__(26);
 
 var _helpersWith2 = _interopRequireDefault(_helpersWith);
 
@@ -749,7 +893,7 @@ function registerDefaultHelpers(instance) {
 
 
 /***/ }),
-/* 14 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -795,7 +939,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 15 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -896,7 +1040,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 16 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -928,7 +1072,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 17 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -964,7 +1108,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 18 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -997,7 +1141,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 19 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1016,7 +1160,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 20 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1056,7 +1200,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 21 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1110,7 +1254,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 22 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1135,10 +1279,10 @@ exports['default'] = function (Handlebars) {
 module.exports = exports['default'];
 //# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2xpYi9oYW5kbGViYXJzL25vLWNvbmZsaWN0LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7O3FCQUNlLFVBQVMsVUFBVSxFQUFFOztBQUVsQyxNQUFJLElBQUksR0FBRyxPQUFPLE1BQU0sS0FBSyxXQUFXLEdBQUcsTUFBTSxHQUFHLE1BQU07TUFDdEQsV0FBVyxHQUFHLElBQUksQ0FBQyxVQUFVLENBQUM7O0FBRWxDLFlBQVUsQ0FBQyxVQUFVLEdBQUcsWUFBVztBQUNqQyxRQUFJLElBQUksQ0FBQyxVQUFVLEtBQUssVUFBVSxFQUFFO0FBQ2xDLFVBQUksQ0FBQyxVQUFVLEdBQUcsV0FBVyxDQUFDO0tBQy9CO0FBQ0QsV0FBTyxVQUFVLENBQUM7R0FDbkIsQ0FBQztDQUNIIiwiZmlsZSI6Im5vLWNvbmZsaWN0LmpzIiwic291cmNlc0NvbnRlbnQiOlsiLyogZ2xvYmFsIHdpbmRvdyAqL1xuZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24oSGFuZGxlYmFycykge1xuICAvKiBpc3RhbmJ1bCBpZ25vcmUgbmV4dCAqL1xuICBsZXQgcm9vdCA9IHR5cGVvZiBnbG9iYWwgIT09ICd1bmRlZmluZWQnID8gZ2xvYmFsIDogd2luZG93LFxuICAgICAgJEhhbmRsZWJhcnMgPSByb290LkhhbmRsZWJhcnM7XG4gIC8qIGlzdGFuYnVsIGlnbm9yZSBuZXh0ICovXG4gIEhhbmRsZWJhcnMubm9Db25mbGljdCA9IGZ1bmN0aW9uKCkge1xuICAgIGlmIChyb290LkhhbmRsZWJhcnMgPT09IEhhbmRsZWJhcnMpIHtcbiAgICAgIHJvb3QuSGFuZGxlYmFycyA9ICRIYW5kbGViYXJzO1xuICAgIH1cbiAgICByZXR1cm4gSGFuZGxlYmFycztcbiAgfTtcbn1cbiJdfQ==
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(25)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(31)))
 
 /***/ }),
-/* 23 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1167,7 +1311,7 @@ var _exception = __webpack_require__(1);
 
 var _exception2 = _interopRequireDefault(_exception);
 
-var _base = __webpack_require__(2);
+var _base = __webpack_require__(3);
 
 function checkRevision(compilerInfo) {
   var compilerRevision = compilerInfo && compilerInfo[0] || 1,
@@ -1442,7 +1586,7 @@ function executeDecorators(fn, prog, container, depths, data, blockParams) {
 
 
 /***/ }),
-/* 24 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1464,7 +1608,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 25 */
+/* 31 */
 /***/ (function(module, exports) {
 
 var g;
@@ -1491,7 +1635,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 26 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1501,200 +1645,159 @@ var _got = __webpack_require__(5);
 
 var _buffy = __webpack_require__(4);
 
-var _radioChecked = __webpack_require__(6);
+var _parks = __webpack_require__(6);
 
-var _validation = __webpack_require__(7);
+var _twinpeaks = __webpack_require__(8);
 
-var choicesTemplate = __webpack_require__(8);
-var scoreTemplate = __webpack_require__(9);
+var _quizzes = __webpack_require__(7);
 
-var questionSet = [[_got.questionSet], [_buffy.questionSet]],
-    answerSet = [],
-    q0 = 0,
-    q1 = 0,
-    q2 = 0,
-    q3 = 0,
-    q = q1,
-    quizNum = 0,
-    quizIndex = 0,
-    qSet,
-    quizLength,
-    q,
-    aSet,
-    tabs = document.querySelector('.tabbed-panel'),
-    startBtn = document.querySelector('div#buttons-' + quizNum + ' button.start'),
-    backBtn = document.querySelector('div#buttons-' + quizNum + ' button.back'),
-    nextBtn = document.querySelector('div#buttons-' + quizNum + ' button.next'),
-    retryBtn = document.querySelector('div#buttons-' + quizNum + ' button.retry');
+var _buttons = __webpack_require__(9);
 
-startBtn.addEventListener('click', startQuiz, false);
-backBtn.addEventListener('click', prevQuestion, false);
-nextBtn.addEventListener('click', nextQuestion, false);
-retryBtn.addEventListener('click', reloadQuiz, false);
+var _radioChecked = __webpack_require__(11);
 
-tabs.addEventListener('change', function (e) {
-  var target = e.target;
-  if (target.id === 'tabbed0') {
-    quizNum = 0;
-  } else if (target.id === 'tabbed1') {
-    quizNum = 1;
-  } else if (target.id === 'tabbed2') {
-    quizNum = 2;
-  } else if (target.id === 'tabbed3') {
-    quizNum = 3;
-  }
-  initializeQuiz(quizNum);
-});
+var _validation = __webpack_require__(12);
 
-initializeQuiz(quizNum);
+var _finalScore = __webpack_require__(10);
 
-function initializeQuiz(quizNum) {
-  if (quizNum === 0) {
-    q = q0;
-  } else if (quizNum === 1) {
-    q = q1;
-  } else if (quizNum === 2) {
-    q = q2;
-  } else if (quizNum === 3) {
-    q = q3;
-  }
-  qSet = questionSet[quizNum][quizIndex];
-  quizLength = qSet.length;
-  q = qArr[quizNum];
-  aSet = answerSet;
-}
+var choicesTemplate = __webpack_require__(13),
+    quizTemplate = __webpack_require__(14);
 
-// function buttonEvents(quizNum) {
-//   var startBtn = 
-// 	}, false);
-// }
+var allQuestionSets = [_got.questionSet, _buffy.questionSet, _parks.questionSet, _twinpeaks.questionSet],
+    questionSet = allQuestionSets[0],
+    quizLength = questionSet.length - 1,
+    answers = [],
+    q = 0;
 
-function displayNavigationButtons(q) {
-
-  var visibleClass = 'btn-container__button--is-visible';
-
-  if (q === 0) {
-    startBtn.classList.remove(visibleClass);
-    backBtn.classList.remove(visibleClass);
-    retryBtn.classList.remove(visibleClass);
-    nextBtn.classList.add(visibleClass);
-  } else if (q === 1) {
-    backBtn.classList.add(visibleClass);
-  } else if (q > quizLength) {
-    backBtn.classList.remove(visibleClass);
-    nextBtn.classList.remove(visibleClass);
-    retryBtn.classList.add(visibleClass);
-  }
-}
+displayQuiz();
+(0, _buttons.buttonEvents)(startQuiz, prevQuestion, nextQuestion, reloadQuiz);
 
 function startQuiz() {
-  displayNavigationButtons(q);
-  insertCurrentQuestion(quizNum, q, qSet, aSet);
+  (0, _buttons.displayButtons)(q, quizLength);
+  insertCurrentQuestion(q);
 }
 
 function nextQuestion() {
   if ((0, _radioChecked.radioChecked)()) {
-    trackAnswers(quizNum, q, qSet, aSet);
+    storeAnswer(q);
     if (q !== quizLength) {
       q++;
-      displayNavigationButtons(q);
-      insertCurrentQuestion(quizNum, q, qSet, aSet);
+      (0, _buttons.displayButtons)(q, quizLength);
+      insertCurrentQuestion(q);
     } else {
       completeQuiz();
     }
   } else {
-    (0, _validation.validation)(quizNum);
+    (0, _validation.validation)();
   }
 }
 
 function prevQuestion() {
-  var validationMsg = document.getElementById('msg-' + quizNum);
+  var validationMsg = document.getElementById('validationMsg');
   if (document.body.contains(validationMsg)) {
-    (0, _validation.removeValidationMsg)(quizNum);
+    (0, _validation.removeValidationMsg)();
   }
   q--;
-  displayNavigationButtons(q, quizNum);
-  insertCurrentQuestion(quizNum, q, qSet, aSet);
+  (0, _buttons.displayButtons)(q, quizLength);
+  insertCurrentQuestion(q);
 }
 
 function completeQuiz() {
   q++;
-  displayNavigationButtons(q);
-  finalScore(quizNum, answerSet);
+  (0, _buttons.displayButtons)(q, quizLength);
+  (0, _finalScore.finalScore)(answers, questionSet);
 }
 
 function reloadQuiz() {
-  answerSet = [];
+  answers = [];
   q = 0;
-  displayNavigationButtons(q);
-  insertCurrentQuestion(quizNum, q, qSet, aSet);
+  (0, _buttons.displayButtons)(q, quizLength);
+  insertCurrentQuestion(q);
 }
 
-function storeQuestionCount(quizNum, q) {
-  qArr[quizNum] = q;
+function displayQuiz() {
+  var quizLinks = document.getElementsByTagName('a'),
+      quizLinks = Array.from(quizLinks),
+      quizText = document.querySelector('.main-section__content'),
+      backgroundImage = document.getElementById('quiz-0__image'),
+      activeLink = document.querySelector('.active');
+
+  for (var i = 0; i < quizLinks.length; i++) {
+    quizLinks[i].addEventListener('click', initiateQuiz, false);
+    quizLinks[i].addEventListener('touchend', initiateQuiz, false);
+  }
+
+  function initiateQuiz(e) {
+    var targetId = e.target.id,
+        quizNum,
+        context,
+        displayQuizText;
+
+    for (var i = 0; i < quizLinks.length; i++) {
+      quizLinks[i].classList.remove('active');
+    }
+
+    if (targetId === 'quiz-0') {
+      quizNum = 0;
+    } else if (targetId === 'quiz-1') {
+      quizNum = 1;
+    } else if (targetId === 'quiz-2') {
+      quizNum = 2;
+    } else if (targetId === 'quiz-3') {
+      quizNum = 3;
+    }
+    backgroundImage.id = 'quiz-' + quizNum + '__image';
+    quizLinks[quizNum].classList.add('active');
+    questionSet = allQuestionSets[quizNum];
+    quizLength = questionSet.length - 1;
+    answers = [];
+    q = 0;
+    context = {
+      quizName: _quizzes.quizzes[quizNum]
+    };
+    displayQuizText = quizTemplate(context);
+    quizText.innerHTML = displayQuizText;
+    (0, _buttons.resetButtonsToStart)();
+    e.preventDefault();
+  }
 }
 
 // Inserts the current question, determined by counter q
-function insertCurrentQuestion(quizNum, q, qSet, aSet) {
-  var qText = document.getElementById('questions-' + quizNum),
+function insertCurrentQuestion(q) {
+  var qText = document.querySelector('.questions'),
       context = {
     qNum: q + 1,
-    quizLength: qSet.length,
-    question: qSet[q].question,
-    quizNum: quizNum,
-    choices: qSet[q].choices
+    quizLength: questionSet.length,
+    question: questionSet[q].question,
+    choices: questionSet[q].choices
   },
       displayChoices = choicesTemplate(context);
 
   qText.innerHTML = displayChoices;
 
   // If the user goes back a question, checks the radio they previously selected
-  if (aSet !== undefined && aSet[q] !== undefined) {
-    document.querySelector('input[value="' + aSet[q].answer + '"]').checked = true;
+  if (answers[q] !== undefined) {
+    document.querySelector('input[value="' + answers[q].answer + '"]').checked = true;
   }
 }
 
-// Adds selected answer to answerTracker array for scoring
-function trackAnswers(quizNum, q, qSet, aSet) {
+// Adds selected answer to answers array for scoring
+function storeAnswer(q) {
   var currentAnswer = {},
       selectedAnswer = document.querySelector('[name="choices"]:checked').value,
-      currentChoice = qSet[q].choices[selectedAnswer],
-      correctAnswer = qSet[q].correctAnswer.toString(),
+      currentChoice = questionSet[q].choices[selectedAnswer],
+      correctAnswer = questionSet[q].correctAnswer.toString(),
       qNum = q + 1;
 
   currentAnswer.answer = selectedAnswer;
   currentAnswer.choice = currentChoice;
+  currentAnswer.questionNumber = qNum;
 
   if (selectedAnswer === correctAnswer) {
     currentAnswer.correct = true;
   } else {
     currentAnswer.correct = false;
   }
-  currentAnswer.questionNumber = qNum;
-  aSet.push(currentAnswer);
-  console.log(aSet);
-}
-
-// Calculates and displays final score with chosen answers
-function finalScore(quizNum, aSet) {
-  var scoreText = document.getElementById('questions-' + quizNum),
-      scoreCounter = 0,
-      context,
-      displayScore;
-
-  for (var i = 0; i < aSet.length; i++) {
-    if (aSet[i].correct) {
-      scoreCounter += 1;
-    }
-  }
-
-  context = {
-    numberCorrect: scoreCounter,
-    quizLength: aSet.length,
-    answers: aSet
-  };
-  displayScore = scoreTemplate(context);
-  scoreText.innerHTML = displayScore;
+  answers[q] = currentAnswer;
 }
 
 /***/ })

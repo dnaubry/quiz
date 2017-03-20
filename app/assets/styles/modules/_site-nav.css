@@ -1,0 +1,71 @@
+.site-nav {
+    &__list {
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+        margin: 0;
+        padding: .5rem 0;
+        background-color: rgba(255, 255, 255, .9);
+        border-bottom: 1px solid #000;
+
+        @mixin atSmall { 
+            overflow: visible;
+            display: block;   
+            margin: .54rem 0;
+            padding: 0;
+            background-color: transparent;
+            border-bottom: none;
+        }
+    }
+
+    li {
+        flex: none;
+        list-style: none;
+         display: inline;
+         padding: 1.2rem .7rem;
+         text-align: center;
+
+        @mixin atSmall {
+            border-bottom: none;
+            padding: 0;
+        }
+    }
+
+   a {
+       text-decoration: none;
+       cursor: pointer;
+
+       &:hover {
+
+           @mixin atSmall {
+                color: $mainRed;
+           }
+       }
+
+       &.active {
+            font-weight: 700;
+            pointer-events: none;
+            cursor: default;
+            touch-action: none;
+
+            @mixin atSmall {
+                background-color: rgba(255, 255, 255, .9);
+            }
+       }
+
+       &:not(.active) {
+           background-color: transparent;
+
+           @mixin atSmall {
+                background-color: rgba($darkGray, .9);
+           }
+       }
+
+       @mixin atSmall {
+            padding: .5rem 1rem;
+       }
+   }
+}
