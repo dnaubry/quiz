@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 32);
+/******/ 	return __webpack_require__(__webpack_require__.s = 33);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -261,7 +261,7 @@ module.exports = exports['default'];
 
 // Create a simple path alias to allow browserify to resolve
 // the runtime on a supported path.
-module.exports = __webpack_require__(16)['default'];
+module.exports = __webpack_require__(17)['default'];
 
 
 /***/ }),
@@ -283,11 +283,11 @@ var _exception = __webpack_require__(1);
 
 var _exception2 = _interopRequireDefault(_exception);
 
-var _helpers = __webpack_require__(19);
+var _helpers = __webpack_require__(20);
 
-var _decorators = __webpack_require__(17);
+var _decorators = __webpack_require__(18);
 
-var _logger = __webpack_require__(27);
+var _logger = __webpack_require__(28);
 
 var _logger2 = _interopRequireDefault(_logger);
 
@@ -386,17 +386,37 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var questionSet = exports.questionSet = [{
-  question: 'What name do Willow and Tara give their kitten?',
-  choices: ['A', 'B', 'Miss Kitty Fantastico', 'D'],
+  question: 'Who is the first vampire that Buffy kills in the first episode, "Welcome to the Hellmouth"?',
+  choices: ['Darla', 'Luke', 'Jesse', 'Thomas'],
+  correctAnswer: 3
+}, {
+  question: 'What gift does Angel give Buffy for her 17th birthday?',
+  choices: ['A silver cross', 'A book', 'A Claddagh ring', 'Takes her ice skating'],
   correctAnswer: 2
 }, {
-  question: 'In the episode "Restless", what does Tara warn Buffy?',
-  choices: ['"Be back before dawn."', 'B', 'C', 'D'],
+  question: 'In the episode "Where the Wild Things Are", the gang goes to find Giles for help and find him singing and playing guitar at the Espresso Bar. What song is he performing?',
+  choices: ['Behind Blue Eyes', 'Freebird', 'Tales of Brave Ulysses', 'Wild Horses'],
   correctAnswer: 0
 }, {
-  question: 'What phrase is not on Buffy\'s tombstone?',
-  choices: ['A', 'B', 'C', 'D'],
+  question: 'Xander tells Anya to dress up as something scary in the Halloween episode "Fear, Itself". What does she dress up as?',
+  choices: ['A nurse', 'A clown', 'A demon', 'A bunny'],
+  correctAnswer: 3
+}, {
+  question: 'What name do Willow and Tara give their kitten?',
+  choices: ['Trixie', 'They haven\'t found her name', 'Miss Kitty Fantastico', 'Joan'],
   correctAnswer: 2
+}, {
+  question: 'What phrase is not on Buffy\'s tombstone?',
+  choices: ['She saved the world a lot', 'Beloved Daughter', 'Devoted Friend', 'Beloved Sister'],
+  correctAnswer: 1
+}, {
+  question: 'In the episode "Restless", what does Tara warn Buffy?',
+  choices: ['"Be back before dawn."', '"You don\'t understand."', '"You\'re asking the wrong questions."', '"Don\'t stick out your elbow."'],
+  correctAnswer: 0
+}, {
+  question: 'What does Dawn get Tara for her birthday in the episode "Family"?',
+  choices: ['A spellbook', 'A witch Pez dispenser', 'A necklace', 'A crystal ball'],
+  correctAnswer: 1
 }];
 
 /***/ }),
@@ -414,13 +434,29 @@ var questionSet = exports.questionSet = [{
   choices: ['The North Remembers', 'When the snows fall and the white winds blow, the lone wolf dies but the pack survives', 'Winter is Coming', 'The winters are hard, but the Starks will endure'],
   correctAnswer: 2
 }, {
-  question: 'What are the house words of House Lannister?',
-  choices: ['Hear me roar!', 'A Lannister always pays his debts', 'Teach them what it means to put a lion in a cage', 'When you play a game of thrones, you win or you die'],
-  correctAnswer: 0
+  question: 'What is the name of Ned Stark\'s Valyrian greatsword?',
+  choices: ['Longclaw', 'Oathkeeper', 'Heartsbane', 'Ice'],
+  correctAnswer: 3
+}, {
+  question: 'Which of these names is not on Arya\'s list?',
+  choices: ['Cersei', 'Roose Bolton', 'Joffery', 'Illyn Payne'],
+  correctAnswer: 1
 }, {
   question: 'What are the house words of House Targaryen?',
   choices: ['Fire cannot kill a dragon', 'Blood of the Dragon', 'All men must die, but we are not men', 'Fire and Blood'],
   correctAnswer: 3
+}, {
+  question: 'What or who kills Khal Drogo in the end?',
+  choices: ['The witch, Mirri', 'His bloodriders', 'Daenerys suffocates him', 'His chest wound'],
+  correctAnswer: 2
+}, {
+  question: 'When Jon first meets Tyrion, what advice does Tyrion give him?',
+  choices: ['“It’s not easy being drunk all the time. If it were easy, everyone would do it.”', '“Never forget what you are, the rest of the world will not. Wear it like armor and it can never be used to hurt you.”', '“It’s hard to put a leash on a dog once you’ve put a crown on its head.”', '“A mind needs books like a sword needs a whetstone.”'],
+  correctAnswer: 1
+}, {
+  question: 'What are the house words of House Lannister?',
+  choices: ['Hear me roar!', 'A Lannister always pays his debts', 'Teach them what it means to put a lion in a cage', 'When you play a game of thrones, you win or you die'],
+  correctAnswer: 0
 }];
 
 /***/ }),
@@ -434,16 +470,28 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var questionSet = exports.questionSet = [{
-  question: 'Question 1?',
-  choices: ['A', 'B', 'C', 'D'],
+  question: 'What is the title of the book Leslie writes?',
+  choices: ['Failure: an American Success Story', 'Pawnee: The Greatest Town in America', 'Off the Sidelines: Raise Your Voice, Change the World', 'A History of Pawnee, Indiana'],
+  correctAnswer: 1
+}, {
+  question: 'What word and description appears at the very top of the Swanson Pyramid of Greatness?',
+  choices: ['Capitalism - God\'s way of determining who is smart, and who is poor', 'Discipline - The ability to repeat a boring thing over and over', 'Buffets - Whenever available. Choose quantity over quality', 'Honor - If you need it defined, you don\'t have it'],
+  correctAnswer: 3
+}, {
+  question: 'Which of these is not one of Andy\'s own secrets he tells Ron after finding out about Duke Silver?',
+  choices: ['"I\'m allergic to sushi. Every time I eat more than 80 pieces, I throw up', '"I don\'t know who Al Gore is and at this point I\'m too afraid to ask"', '"When they say 2% milk, I don\'t know what the other 98% is"', '"I didn\'t actually sell my last car, I just forgot where I parked it"'],
   correctAnswer: 0
 }, {
-  question: 'Question 2?',
-  choices: ['A"', 'B', 'C', 'D'],
-  correctAnswer: 0
+  question: 'What superhero costume does Ben buy when Donna and Tom bring him along on their annual "Treat Yo Self" day?',
+  choices: ['Superman', 'Spider-man', 'Batman', 'Captain America'],
+  correctAnswer: 2
 }, {
-  question: 'Question 3?',
-  choices: ['A', 'B', 'C', 'D'],
+  question: 'What is the only thing Ron hates more than lying?',
+  choices: ['Clear alcohols', 'Salad', 'Cats', 'Skim milk'],
+  correctAnswer: 3
+}, {
+  question: 'What is April\'s favorite band?',
+  choices: ['Neutral Milk Hotel', 'Scarecrow Boat', 'The Duke Silver Trio', 'Mouse Rat'],
   correctAnswer: 0
 }];
 
@@ -455,9 +503,25 @@ var questionSet = exports.questionSet = [{
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
-var quizzes = exports.quizzes = ["Game of Thrones", "Buffy the Vampire Slayer", "Parks and Recreation", "Twin Peaks"];
+var quizzes = exports.quizzes = [{
+  name: 'Game of Thrones',
+  quote: 'When you play the game of thrones, you win or you die. There is no middle ground.',
+  quoteSource: 'Season 1, Episode 7'
+}, {
+  name: 'Buffy the Vampire Slayer',
+  quote: 'In every generation there is a chosen one... she alone will stand against the vampires, the demons and the forces of darkness. She is the slayer.',
+  quoteSource: 'Season 1, Episode 1'
+}, {
+  name: 'Parks and Recreation',
+  quote: 'We need to remember what\'s important in life: friends, waffles, work. Or waffles, friends, work. Doesn\'t matter, but work is third.',
+  quoteSource: 'Season 3, Episode 13'
+}, {
+  name: 'Twin Peaks',
+  quote: 'I have no idea where this will lead us. But I have a definite feeling it will be a place both wonderful and strange.',
+  quoteSource: 'Season 2, Episode 18'
+}];
 
 /***/ }),
 /* 8 */
@@ -470,16 +534,24 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var questionSet = exports.questionSet = [{
-  question: 'Question 1?',
-  choices: ['A', 'B', 'C', 'D'],
-  correctAnswer: 0
+  question: 'Who discovers Laura Palmer\'s body?',
+  choices: ['Sheriff Harry S. Truman', 'Doc Hayward', 'Hank Jennings', 'Pete Martell'],
+  correctAnswer: 3
 }, {
-  question: 'Question 2?',
-  choices: ['A"', 'B', 'C', 'D'],
-  correctAnswer: 0
+  question: 'What is the name of Agent Cooper\'s secretary, who he addresses on most of his recordings?',
+  choices: ['Lucy', 'Margaret', 'Diane', 'Nadine'],
+  correctAnswer: 2
 }, {
-  question: 'Question 3?',
-  choices: ['A', 'B', 'C', 'D'],
+  question: 'What is the name of the diner Shelly works at?',
+  choices: ['Great Northern Diner', 'Double R Diner', 'Roadhouse', 'Bookhouse Diner'],
+  correctAnswer: 1
+}, {
+  question: 'What is Agent Cooper\'s favorite type of donut?',
+  choices: ['Bearclaw', 'Boston Creme', 'Jelly', 'Cruller'],
+  correctAnswer: 2
+}, {
+  question: 'What is the Log Lady\'s real name?',
+  choices: ['Margaret Lanterman', 'Catherine Martell', 'Annie Blackburn', 'Nadine Hurley'],
   correctAnswer: 0
 }];
 
@@ -493,45 +565,25 @@ var questionSet = exports.questionSet = [{
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var startBtn = document.querySelector('.start'),
-    backBtn = document.querySelector('.back'),
-    nextBtn = document.querySelector('.next'),
-    retryBtn = document.querySelector('.retry'),
-    visibleClass = 'btn-container__button--is-visible';
-
-function buttonEvents(startQuiz, prevQuestion, nextQuestion, reloadQuiz) {
-  startBtn.addEventListener('click', startQuiz, false);
-  backBtn.addEventListener('click', prevQuestion, false);
-  nextBtn.addEventListener('click', nextQuestion, false);
-  retryBtn.addEventListener('click', reloadQuiz, false);
-}
-
-function displayButtons(q, quizLength) {
-
-  if (q === 0) {
-    startBtn.classList.remove(visibleClass);
-    backBtn.classList.remove(visibleClass);
-    retryBtn.classList.remove(visibleClass);
-    nextBtn.classList.add(visibleClass);
-  } else if (q === 1) {
-    backBtn.classList.add(visibleClass);
-  } else if (q > quizLength) {
-    backBtn.classList.remove(visibleClass);
-    nextBtn.classList.remove(visibleClass);
-    retryBtn.classList.add(visibleClass);
+var counter = function counter() {
+  var privateCounter = 0;
+  function changeBy(val) {
+    privateCounter += val;
   }
-}
+  return {
+    increment: function increment() {
+      changeBy(1);
+    },
+    decrement: function decrement() {
+      changeBy(-1);
+    },
+    value: function value() {
+      return privateCounter;
+    }
+  };
+};
 
-function resetButtonsToStart() {
-  backBtn.classList.remove(visibleClass);
-  retryBtn.classList.remove(visibleClass);
-  nextBtn.classList.remove(visibleClass);
-  startBtn.classList.add(visibleClass);
-}
-
-exports.buttonEvents = buttonEvents;
-exports.displayButtons = displayButtons;
-exports.resetButtonsToStart = resetButtonsToStart;
+exports.counter = counter;
 
 /***/ }),
 /* 10 */
@@ -543,25 +595,65 @@ exports.resetButtonsToStart = resetButtonsToStart;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var scoreTemplate = __webpack_require__(15);
+function showButton(btn) {
+  var visibleClass = 'btn-container__button--is-visible';
+  btn.classList.add(visibleClass);
+}
+
+function hideButton(btn) {
+  var visibleClass = 'btn-container__button--is-visible';
+  btn.classList.remove(visibleClass);
+}
+
+exports.showButton = showButton;
+exports.hideButton = hideButton;
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var scoreTemplate = __webpack_require__(16);
 
 // Calculates and displays final score with chosen answers
-function finalScore(answers, questionSet) {
-  var scoreText = document.querySelector('.questions'),
-      scoreCounter = 0,
-      context,
-      displayScore;
+function finalScore(answer, questionSet) {
+  var scoreText, allAnswers, answerSet, scoreCounter, correctAnswer, selectedAnswer, answerText, questionNumber, isCorrect, context, displayScore;
 
-  for (var i = 0; i < answers.length; i++) {
-    if (answers[i].correct) {
+  scoreText = document.querySelector('.questions');
+  allAnswers = answer.value();
+  answerSet = [];
+  scoreCounter = 0;
+
+  function Answer(selectedAnswer, answerText, questionNumber, isCorrect) {
+    this.answer = selectedAnswer;
+    this.answerText = answerText;
+    this.questionNumber = questionNumber;
+    this.isCorrect = isCorrect;
+  }
+
+  for (var i = 0; i < allAnswers.length; i++) {
+    correctAnswer = questionSet[i].correctAnswer.toString();
+    selectedAnswer = allAnswers[i];
+    answerText = questionSet[i].choices[allAnswers[i]];
+    questionNumber = i + 1;
+    if (selectedAnswer === correctAnswer) {
       scoreCounter += 1;
+      isCorrect = true;
+    } else {
+      isCorrect = false;
     }
+    answerSet[i] = new Answer(selectedAnswer, answerText, questionNumber, isCorrect);
   }
 
   context = {
     numberCorrect: scoreCounter,
     quizLength: questionSet.length,
-    answers: answers
+    answers: answerSet
   };
   displayScore = scoreTemplate(context);
   scoreText.innerHTML = displayScore;
@@ -570,7 +662,7 @@ function finalScore(answers, questionSet) {
 exports.finalScore = finalScore;
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -593,7 +685,7 @@ function radioChecked() {
 exports.radioChecked = radioChecked;
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -604,9 +696,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 // Displays a message asking user to choose an answer if one is not selected
 function validation() {
-  var msgExists = document.getElementById('validationMsg');
+  var existingMsg = document.getElementById('validationMsg');
   // Checks if the message already exists so it doesn't display multiple messages
-  if (!document.body.contains(msgExists)) {
+  if (!document.body.contains(existingMsg)) {
     var msgEl = document.createElement('div'),
         msg = document.createTextNode('Please choose an answer!'),
         position = document.querySelector('.btn-container'),
@@ -628,16 +720,19 @@ function validation() {
 
 // Removes message when an answer is selected
 function removeValidationMsg() {
-  var removeMsgEl = document.getElementById('validationMsg');
-  var containerEl = removeMsgEl.parentNode;
-  containerEl.removeChild(removeMsgEl);
+  var validationMsg = document.getElementById('validationMsg');
+
+  if (document.body.contains(validationMsg)) {
+    var containerEl = validationMsg.parentNode;
+    containerEl.removeChild(validationMsg);
+  }
 }
 
 exports.validation = validation;
 exports.removeValidationMsg = removeValidationMsg;
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Handlebars = __webpack_require__(2);
@@ -651,33 +746,39 @@ module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,"
     + alias4(((helper = (helper = helpers.quizLength || (depth0 != null ? depth0.quizLength : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"quizLength","hash":{},"data":data}) : helper)))
     + "</h2>\r\n\r\n<p class=\"questions__question-text\">"
     + alias4(((helper = (helper = helpers.question || (depth0 != null ? depth0.question : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"question","hash":{},"data":data}) : helper)))
-    + "</p>\r\n\r\n<p class=\"questions__question-choice\">\r\n  <input type=\"radio\" name=\"choices\" id=\"choice-0\" value=\"0\" />\r\n  <label for=\"choice-0\" class=\"questions__question-choice--label\">"
+    + "</p>\r\n\r\n<p class=\"questions__question-choice\">\r\n  <input type=\"radio\" name=\"choices\" id=\"choice-0\" class=\"questions__question-choice--radio\" value=\"0\" />\r\n  <label for=\"choice-0\" class=\"questions__question-choice--label\">"
     + alias4(alias5(((stack1 = (depth0 != null ? depth0.choices : depth0)) != null ? stack1["0"] : stack1), depth0))
-    + "</label>\r\n</p>\r\n<p class=\"questions__question-choice\">\r\n  <input type=\"radio\" name=\"choices\" id=\"choice-1\" value=\"1\" />\r\n  <label for=\"choice-1\" class=\"questions__question-choice--label\">"
+    + "</label>\r\n</p>\r\n<p class=\"questions__question-choice\">\r\n  <input type=\"radio\" name=\"choices\" id=\"choice-1\" class=\"questions__question-choice--radio\" value=\"1\" />\r\n  <label for=\"choice-1\" class=\"questions__question-choice--label\">"
     + alias4(alias5(((stack1 = (depth0 != null ? depth0.choices : depth0)) != null ? stack1["1"] : stack1), depth0))
-    + "</label>\r\n</p>\r\n<p class=\"questions__question-choice\">\r\n  <input type=\"radio\" name=\"choices\" id=\"choice-2\" value=\"2\" />\r\n  <label for=\"choice-2\" class=\"questions__question-choice--label\">"
+    + "</label>\r\n</p>\r\n<p class=\"questions__question-choice\">\r\n  <input type=\"radio\" name=\"choices\" id=\"choice-2\" class=\"questions__question-choice--radio\" value=\"2\" />\r\n  <label for=\"choice-2\" class=\"questions__question-choice--label\">"
     + alias4(alias5(((stack1 = (depth0 != null ? depth0.choices : depth0)) != null ? stack1["2"] : stack1), depth0))
-    + "</label>\r\n</p>\r\n<p class=\"questions__question-choice\">\r\n  <input type=\"radio\" name=\"choices\" id=\"choice-3\" value=\"3\" />\r\n  <label for=\"choice-3\" class=\"questions__question-choice--label\">"
+    + "</label>\r\n</p>\r\n<p class=\"questions__question-choice\">\r\n  <input type=\"radio\" name=\"choices\" id=\"choice-3\" class=\"questions__question-choice--radio\" value=\"3\" />\r\n  <label for=\"choice-3\" class=\"questions__question-choice--label\">"
     + alias4(alias5(((stack1 = (depth0 != null ? depth0.choices : depth0)) != null ? stack1["3"] : stack1), depth0))
     + "</label>\r\n</p>\r\n";
 },"useData":true});
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Handlebars = __webpack_require__(2);
 function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
 module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var helper;
+    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
   return "<p class=\"main-section__title\">"
-    + container.escapeExpression(((helper = (helper = helpers.quizName || (depth0 != null ? depth0.quizName : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"quizName","hash":{},"data":data}) : helper)))
-    + "</p>\r\n          <div class=\"questions\">\r\n            <p class=\"questions__text\">Click start to begin the quiz!</p>\r\n          </div>\r\n        </div>";
+    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
+    + "</p>\r\n  <div class=\"questions\">\r\n    <div class=\"questions__intro\">\r\n      <p class=\"questions__intro-text\">\""
+    + alias4(((helper = (helper = helpers.quote || (depth0 != null ? depth0.quote : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"quote","hash":{},"data":data}) : helper)))
+    + "\"</p>\r\n      <p class=\"questions__intro-source\">"
+    + alias4(((helper = (helper = helpers.quoteSource || (depth0 != null ? depth0.quoteSource : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"quoteSource","hash":{},"data":data}) : helper)))
+    + "</a></p>\r\n      <p class=\"questions__start-text\">Click start to test your "
+    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
+    + " knowledge!</p>\r\n    </div>\r\n  </div>";
 },"useData":true});
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Handlebars = __webpack_require__(2);
@@ -688,9 +789,9 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
   return "<ul>\r\n  <li class=\"questions__score\">\r\n    "
     + alias2(alias1((depth0 != null ? depth0.questionNumber : depth0), depth0))
     + " - "
-    + alias2(alias1((depth0 != null ? depth0.choice : depth0), depth0))
+    + alias2(alias1((depth0 != null ? depth0.answerText : depth0), depth0))
     + "\r\n"
-    + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.correct : depth0),{"name":"if","hash":{},"fn":container.program(2, data, 0),"inverse":container.program(4, data, 0),"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.isCorrect : depth0),{"name":"if","hash":{},"fn":container.program(2, data, 0),"inverse":container.program(4, data, 0),"data":data})) != null ? stack1 : "")
     + "  </li>\r\n</ul>\r\n";
 },"2":function(container,depth0,helpers,partials,data) {
     return "        <span class=\"questions__score--correct\">✔</span>\r\n";
@@ -708,7 +809,7 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
 },"useData":true});
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -730,7 +831,7 @@ var base = _interopRequireWildcard(_handlebarsBase);
 // Each of these augment the Handlebars object. No need to setup here.
 // (This is done to easily share code between commonjs and browse envs)
 
-var _handlebarsSafeString = __webpack_require__(30);
+var _handlebarsSafeString = __webpack_require__(31);
 
 var _handlebarsSafeString2 = _interopRequireDefault(_handlebarsSafeString);
 
@@ -742,11 +843,11 @@ var _handlebarsUtils = __webpack_require__(0);
 
 var Utils = _interopRequireWildcard(_handlebarsUtils);
 
-var _handlebarsRuntime = __webpack_require__(29);
+var _handlebarsRuntime = __webpack_require__(30);
 
 var runtime = _interopRequireWildcard(_handlebarsRuntime);
 
-var _handlebarsNoConflict = __webpack_require__(28);
+var _handlebarsNoConflict = __webpack_require__(29);
 
 var _handlebarsNoConflict2 = _interopRequireDefault(_handlebarsNoConflict);
 
@@ -781,7 +882,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -793,7 +894,7 @@ exports.registerDefaultDecorators = registerDefaultDecorators;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var _decoratorsInline = __webpack_require__(18);
+var _decoratorsInline = __webpack_require__(19);
 
 var _decoratorsInline2 = _interopRequireDefault(_decoratorsInline);
 
@@ -804,7 +905,7 @@ function registerDefaultDecorators(instance) {
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -840,7 +941,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -852,31 +953,31 @@ exports.registerDefaultHelpers = registerDefaultHelpers;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var _helpersBlockHelperMissing = __webpack_require__(20);
+var _helpersBlockHelperMissing = __webpack_require__(21);
 
 var _helpersBlockHelperMissing2 = _interopRequireDefault(_helpersBlockHelperMissing);
 
-var _helpersEach = __webpack_require__(21);
+var _helpersEach = __webpack_require__(22);
 
 var _helpersEach2 = _interopRequireDefault(_helpersEach);
 
-var _helpersHelperMissing = __webpack_require__(22);
+var _helpersHelperMissing = __webpack_require__(23);
 
 var _helpersHelperMissing2 = _interopRequireDefault(_helpersHelperMissing);
 
-var _helpersIf = __webpack_require__(23);
+var _helpersIf = __webpack_require__(24);
 
 var _helpersIf2 = _interopRequireDefault(_helpersIf);
 
-var _helpersLog = __webpack_require__(24);
+var _helpersLog = __webpack_require__(25);
 
 var _helpersLog2 = _interopRequireDefault(_helpersLog);
 
-var _helpersLookup = __webpack_require__(25);
+var _helpersLookup = __webpack_require__(26);
 
 var _helpersLookup2 = _interopRequireDefault(_helpersLookup);
 
-var _helpersWith = __webpack_require__(26);
+var _helpersWith = __webpack_require__(27);
 
 var _helpersWith2 = _interopRequireDefault(_helpersWith);
 
@@ -893,7 +994,7 @@ function registerDefaultHelpers(instance) {
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -939,7 +1040,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1040,7 +1141,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1072,7 +1173,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1108,7 +1209,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1141,7 +1242,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1160,7 +1261,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1200,7 +1301,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1254,7 +1355,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1279,10 +1380,10 @@ exports['default'] = function (Handlebars) {
 module.exports = exports['default'];
 //# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2xpYi9oYW5kbGViYXJzL25vLWNvbmZsaWN0LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7O3FCQUNlLFVBQVMsVUFBVSxFQUFFOztBQUVsQyxNQUFJLElBQUksR0FBRyxPQUFPLE1BQU0sS0FBSyxXQUFXLEdBQUcsTUFBTSxHQUFHLE1BQU07TUFDdEQsV0FBVyxHQUFHLElBQUksQ0FBQyxVQUFVLENBQUM7O0FBRWxDLFlBQVUsQ0FBQyxVQUFVLEdBQUcsWUFBVztBQUNqQyxRQUFJLElBQUksQ0FBQyxVQUFVLEtBQUssVUFBVSxFQUFFO0FBQ2xDLFVBQUksQ0FBQyxVQUFVLEdBQUcsV0FBVyxDQUFDO0tBQy9CO0FBQ0QsV0FBTyxVQUFVLENBQUM7R0FDbkIsQ0FBQztDQUNIIiwiZmlsZSI6Im5vLWNvbmZsaWN0LmpzIiwic291cmNlc0NvbnRlbnQiOlsiLyogZ2xvYmFsIHdpbmRvdyAqL1xuZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24oSGFuZGxlYmFycykge1xuICAvKiBpc3RhbmJ1bCBpZ25vcmUgbmV4dCAqL1xuICBsZXQgcm9vdCA9IHR5cGVvZiBnbG9iYWwgIT09ICd1bmRlZmluZWQnID8gZ2xvYmFsIDogd2luZG93LFxuICAgICAgJEhhbmRsZWJhcnMgPSByb290LkhhbmRsZWJhcnM7XG4gIC8qIGlzdGFuYnVsIGlnbm9yZSBuZXh0ICovXG4gIEhhbmRsZWJhcnMubm9Db25mbGljdCA9IGZ1bmN0aW9uKCkge1xuICAgIGlmIChyb290LkhhbmRsZWJhcnMgPT09IEhhbmRsZWJhcnMpIHtcbiAgICAgIHJvb3QuSGFuZGxlYmFycyA9ICRIYW5kbGViYXJzO1xuICAgIH1cbiAgICByZXR1cm4gSGFuZGxlYmFycztcbiAgfTtcbn1cbiJdfQ==
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(31)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)))
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1586,7 +1687,7 @@ function executeDecorators(fn, prog, container, depths, data, blockParams) {
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1608,7 +1709,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports) {
 
 var g;
@@ -1635,7 +1736,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1651,153 +1752,186 @@ var _twinpeaks = __webpack_require__(8);
 
 var _quizzes = __webpack_require__(7);
 
-var _buttons = __webpack_require__(9);
+var _displayButtons = __webpack_require__(10);
 
-var _radioChecked = __webpack_require__(11);
+var _radioChecked = __webpack_require__(12);
 
-var _validation = __webpack_require__(12);
+var _validation = __webpack_require__(13);
 
-var _finalScore = __webpack_require__(10);
+var _finalScore = __webpack_require__(11);
 
-var choicesTemplate = __webpack_require__(13),
-    quizTemplate = __webpack_require__(14);
+var _counter = __webpack_require__(9);
 
-var allQuestionSets = [_got.questionSet, _buffy.questionSet, _parks.questionSet, _twinpeaks.questionSet],
+var choicesTemplate = __webpack_require__(14),
+    quizTemplate = __webpack_require__(15),
+    allQuestionSets = [_got.questionSet, _buffy.questionSet, _parks.questionSet, _twinpeaks.questionSet],
     questionSet = allQuestionSets[0],
-    quizLength = questionSet.length - 1,
-    answers = [],
-    q = 0;
+    questionCounter = (0, _counter.counter)(),
+    answer = quizAnswers();
 
-displayQuiz();
-(0, _buttons.buttonEvents)(startQuiz, prevQuestion, nextQuestion, reloadQuiz);
-
-function startQuiz() {
-  (0, _buttons.displayButtons)(q, quizLength);
-  insertCurrentQuestion(q);
-}
-
-function nextQuestion() {
-  if ((0, _radioChecked.radioChecked)()) {
-    storeAnswer(q);
-    if (q !== quizLength) {
-      q++;
-      (0, _buttons.displayButtons)(q, quizLength);
-      insertCurrentQuestion(q);
-    } else {
-      completeQuiz();
-    }
-  } else {
-    (0, _validation.validation)();
-  }
-}
-
-function prevQuestion() {
-  var validationMsg = document.getElementById('validationMsg');
-  if (document.body.contains(validationMsg)) {
-    (0, _validation.removeValidationMsg)();
-  }
-  q--;
-  (0, _buttons.displayButtons)(q, quizLength);
-  insertCurrentQuestion(q);
-}
-
-function completeQuiz() {
-  q++;
-  (0, _buttons.displayButtons)(q, quizLength);
-  (0, _finalScore.finalScore)(answers, questionSet);
-}
-
-function reloadQuiz() {
-  answers = [];
-  q = 0;
-  (0, _buttons.displayButtons)(q, quizLength);
-  insertCurrentQuestion(q);
-}
-
-function displayQuiz() {
+function quizSetup() {
   var quizLinks = document.getElementsByTagName('a'),
-      quizLinks = Array.from(quizLinks),
       quizText = document.querySelector('.main-section__content'),
-      backgroundImage = document.getElementById('quiz-0__image'),
-      activeLink = document.querySelector('.active');
+      backgroundImage = document.getElementById('quiz-0__image');
 
+  // Adds click and touch event listeners to each quiz link in the menu
   for (var i = 0; i < quizLinks.length; i++) {
     quizLinks[i].addEventListener('click', initiateQuiz, false);
     quizLinks[i].addEventListener('touchend', initiateQuiz, false);
   }
 
-  function initiateQuiz(e) {
-    var targetId = e.target.id,
-        quizNum,
-        context,
-        displayQuizText;
-
+  function removeActiveLinks(quizLinks) {
     for (var i = 0; i < quizLinks.length; i++) {
       quizLinks[i].classList.remove('active');
     }
+  }
 
-    if (targetId === 'quiz-0') {
-      quizNum = 0;
-    } else if (targetId === 'quiz-1') {
-      quizNum = 1;
-    } else if (targetId === 'quiz-2') {
-      quizNum = 2;
-    } else if (targetId === 'quiz-3') {
-      quizNum = 3;
-    }
+  function addActiveLink(target) {
+    target.classList.add('active');
+  }
+
+  // Initializes the variables for the selected quiz
+  function initiateQuiz() {
+    var target = this,
+        targetId = target.id,
+        quizNum = targetId.charAt(targetId.length - 1),
+        context,
+        displayQuizText,
+        start = document.getElementById('start'),
+        back = document.getElementById('back'),
+        next = document.getElementById('next'),
+        retry = document.getElementById('retry');
+
     backgroundImage.id = 'quiz-' + quizNum + '__image';
-    quizLinks[quizNum].classList.add('active');
     questionSet = allQuestionSets[quizNum];
-    quizLength = questionSet.length - 1;
-    answers = [];
-    q = 0;
+    answer = quizAnswers();
+    questionCounter = (0, _counter.counter)();
     context = {
-      quizName: _quizzes.quizzes[quizNum]
+      name: _quizzes.quizzes[quizNum].name,
+      quote: _quizzes.quizzes[quizNum].quote,
+      quoteSource: _quizzes.quizzes[quizNum].quoteSource
     };
     displayQuizText = quizTemplate(context);
     quizText.innerHTML = displayQuizText;
-    (0, _buttons.resetButtonsToStart)();
-    e.preventDefault();
+
+    removeActiveLinks(quizLinks);
+    addActiveLink(target);
+    (0, _displayButtons.hideButton)(retry);
+    (0, _displayButtons.hideButton)(back);
+    (0, _displayButtons.hideButton)(next);
+    (0, _displayButtons.showButton)(start);
   }
 }
+quizSetup();
 
-// Inserts the current question, determined by counter q
-function insertCurrentQuestion(q) {
-  var qText = document.querySelector('.questions'),
-      context = {
-    qNum: q + 1,
-    quizLength: questionSet.length,
-    question: questionSet[q].question,
-    choices: questionSet[q].choices
-  },
-      displayChoices = choicesTemplate(context);
+function operateQuiz() {
+  var start = document.getElementById('start'),
+      back = document.getElementById('back'),
+      next = document.getElementById('next'),
+      retry = document.getElementById('retry');
 
-  qText.innerHTML = displayChoices;
+  start.addEventListener('click', startQuiz, false);
+  back.addEventListener('click', prevQuestion, false);
+  next.addEventListener('click', nextQuestion, false);
+  retry.addEventListener('click', retryQuiz, false);
 
-  // If the user goes back a question, checks the radio they previously selected
-  if (answers[q] !== undefined) {
-    document.querySelector('input[value="' + answers[q].answer + '"]').checked = true;
+  // Inserts the current question, determined by value of questionCounter
+  function insertQuestion() {
+    var q = questionCounter.value(),
+        questionText = document.querySelector('.questions'),
+        context = {
+      qNum: q + 1,
+      quizLength: questionSet.length,
+      question: questionSet[q].question,
+      choices: questionSet[q].choices
+    },
+        displayChoices = choicesTemplate(context);
+
+    questionText.innerHTML = displayChoices;
+  }
+
+  function startQuiz() {
+    (0, _displayButtons.showButton)(next);
+    (0, _displayButtons.hideButton)(start);
+    insertQuestion();
+  }
+
+  function prevQuestion() {
+    var q = questionCounter.value();
+    // Hide the Back button when going back to first question
+    if (q === 1) {
+      (0, _displayButtons.hideButton)(back);
+    }
+    (0, _validation.removeValidationMsg)();
+    questionCounter.decrement();
+    insertQuestion();
+    answer.retrieve();
+  }
+
+  function nextQuestion() {
+    var q = questionCounter.value(),
+        quizLength = questionSet.length;
+    if ((0, _radioChecked.radioChecked)()) {
+      answer.store();
+      if (q < quizLength - 1) {
+        // Show the Back button after the first question
+        if (q === 0) {
+          (0, _displayButtons.showButton)(back);
+        }
+        questionCounter.increment();
+        insertQuestion();
+        answer.retrieve();
+      } else {
+        // After the last question, hide the Back and Next buttons, show the Retry button and score
+        (0, _displayButtons.hideButton)(back);
+        (0, _displayButtons.hideButton)(next);
+        (0, _displayButtons.showButton)(retry);
+        (0, _finalScore.finalScore)(answer, questionSet);
+      }
+    } else {
+      // If no answer was selected when Next button was clicked, show validation message
+      (0, _validation.validation)();
+    }
+  }
+
+  function retryQuiz() {
+    // Reset answers
+    answer = quizAnswers();
+    (0, _displayButtons.hideButton)(retry);
+    (0, _displayButtons.showButton)(next);
+    // Reset counter
+    questionCounter = (0, _counter.counter)();
+    insertQuestion();
   }
 }
+operateQuiz();
 
-// Adds selected answer to answers array for scoring
-function storeAnswer(q) {
-  var currentAnswer = {},
-      selectedAnswer = document.querySelector('[name="choices"]:checked').value,
-      currentChoice = questionSet[q].choices[selectedAnswer],
-      correctAnswer = questionSet[q].correctAnswer.toString(),
-      qNum = q + 1;
+function quizAnswers() {
+  var answers = [];
 
-  currentAnswer.answer = selectedAnswer;
-  currentAnswer.choice = currentChoice;
-  currentAnswer.questionNumber = qNum;
+  function store() {
+    var q = questionCounter.value(),
+        selectedAnswer = document.querySelector('[name="choices"]:checked').value;
 
-  if (selectedAnswer === correctAnswer) {
-    currentAnswer.correct = true;
-  } else {
-    currentAnswer.correct = false;
+    answers[q] = selectedAnswer;
   }
-  answers[q] = currentAnswer;
+
+  function retrieve() {
+    var q = questionCounter.value();
+
+    if (answers[q] !== undefined) {
+      var selectedAnswer = answers[q],
+          choices = document.querySelectorAll('[name="choices"]');
+
+      choices[selectedAnswer].checked = true;
+    }
+  }
+
+  function value() {
+    return answers;
+  }
+
+  return { store: store, retrieve: retrieve, value: value };
 }
 
 /***/ })

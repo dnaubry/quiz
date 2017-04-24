@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro|Cabin');
+@import url('https://fonts.googleapis.com/css?family=Lato|Fjalla+One');
 /*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Change the default font family in all browsers (opinionated).
@@ -365,10 +365,23 @@ template {
 [hidden] {
   display: none;
 }
-/*$mainRed: #ef5350;*/
 html {
     height: 100%;
     background-color: #eeeeee;
+}
+body {
+    font-family: 'Lato', sans-serif;
+    min-height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+a {
+  color: #000;
 }
 html#quiz-0__image {
   background: url('../../assets/images/castle-small.jpg') no-repeat center center fixed;
@@ -388,6 +401,26 @@ html#quiz-3__image {
 }
 @media (min-width: 580px){
   html#quiz-0__image{
+    background: url('../../assets/images/castle-large.jpg') no-repeat center center fixed;
+    background-size: cover;
+  }
+  html#quiz-1__image{
+    background: url('../../assets/images/graveyard-large.jpg') no-repeat center center fixed;
+    background-size: cover;
+  }
+  html#quiz-2__image{
+    background: url('../../assets/images/swings-large.jpg') no-repeat center center fixed;
+    background-size: cover;
+  }
+  html#quiz-3__image{
+    background: url('../../assets/images/trees-large.jpg') no-repeat center center fixed;
+    background-size: cover;
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 580px),
+       (min-resolution: 192dpi) and (min-width: 580px),
+       (min-resolution: 2dppx) and (min-width: 580px){
+  html#quiz-0__image{
     background: url('../../assets/images/castle-hi-dpi.jpg') no-repeat center center fixed;
     background-size: cover;
   }
@@ -404,32 +437,17 @@ html#quiz-3__image {
     background-size: cover;
   }
 }
-body {
-    font-family: 'Source Sans Pro', sans-serif;
-    min-height: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    }
-a {
-  color: #000;
-}
 .site-nav__list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  font-family: 'Lato', sans-serif;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
   overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  -ms-overflow-style: -ms-autohiding-scrollbar;
   margin: 0;
   padding: .5rem 0;
   background-color: rgba(255, 255, 255, .9);
@@ -439,10 +457,20 @@ a {
   .site-nav__list{
     overflow: visible;
     display: block;
-    margin: .54rem 0;
+    margin: .52rem 0;
     padding: 0;
     background-color: transparent;
     border-bottom: none;
+  }
+}
+@media (min-width: 800px){
+  .site-nav__list{
+    margin: .53rem 0;
+  }
+}
+@media (min-width: 1010px){
+  .site-nav__list{
+    margin: .51rem 0;
   }
 }
 .site-nav li {
@@ -451,7 +479,7 @@ a {
           flex: none;
   list-style: none;
   display: inline;
-  padding: 1.2rem .7rem;
+  padding: 1rem .7rem;
   text-align: center;
 }
 @media (min-width: 580px){
@@ -491,14 +519,21 @@ a {
 }
 @media (min-width: 580px){
   .site-nav a{
+    font-size: .9rem;
+    padding: .5rem .5rem;
+  }
+}
+@media (min-width: 800px){
+  .site-nav a{
+    font-size: 1rem;
     padding: .5rem 1rem;
   }
 }
 .wrapper {
-  width: 100%;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  width: 100%;
 }
 @media (min-width: 580px){
   .wrapper{
@@ -523,7 +558,8 @@ a {
     padding: .7rem;
 }
 .main-section__title {
-  font-family: 'Cabin', sans-serif;
+  font-family: 'Fjalla One', sans-serif;
+  font-weight: 700;
   text-align: center;
   font-size: 1.3rem;
   margin-bottom: 0;
@@ -543,21 +579,16 @@ a {
     margin: 15px 0;
   }
 }
-.btn-container__left {
-  display: inline;
-}
-.btn-container__right {
-  display: inline;
-}
 .btn-container__button {
   display: none;
   background-color: #eeeeee;
-  font-family: 'Cabin', sans-serif;
+  font-family: 'Lato', sans-serif;
   color: #000;
   font-size: 1.2rem;
   letter-spacing: 3px;
+  font-weight: 700;
   border: 2px solid #000;
-  padding: 10px;
+  padding: .8rem;
   margin: 0px 15px;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
@@ -593,7 +624,7 @@ a {
   }
 }
 .site-header__title {
-  font-family: 'Cabin', sans-serif;
+  font-family: 'Fjalla One', sans-serif;
   color: #000;
   font-size: 2rem;
   text-shadow: 0.5px 0.5px #eeeeee;
@@ -619,9 +650,31 @@ a {
     margin: 0px auto;
     padding: 10px 20px;
 }
-.questions__text {
+.questions__intro {
   text-align: center;
-  font-size: 1.5em;
+}
+@media (min-width: 1010px){
+  .questions__intro{
+    width: 70%;
+    margin: 0 auto;
+  }
+}
+@media (min-width: 1600px){
+  .questions__intro{
+    width: 60%;
+    margin: 0 auto;
+  }
+}
+.questions__intro-text {
+  font-size: 1.3rem;
+}
+.questions__intro-source {
+  font-size: 1rem;
+  text-align: right;
+}
+.questions__start-text {
+  font-size: 1.1rem;
+  padding-top: 50px;
 }
 .questions__question-count {
   font-size: 1.1rem;
@@ -631,8 +684,8 @@ a {
 }
 @media (min-width: 580px){
   .questions__question-count{
-    font-size: 1.5rem;
-    word-spacing: .7rem;
+    font-size: 1.2rem;
+    word-spacing: .5rem;
   }
 }
 .questions__question-text {
@@ -641,7 +694,7 @@ a {
 }
 @media (min-width: 580px){
   .questions__question-text{
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 }
 .questions__question-choice {
@@ -656,11 +709,13 @@ a {
   font-size: 1em;
   margin: 0;
   font-weight: 400;
-  padding-left: 10px;
+  padding-left: .2rem;
+  width: 100%;
+  cursor: pointer;
 }
 @media (min-width: 580px){
   .questions__question-choice--label{
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 }
 .questions__score {
@@ -691,6 +746,7 @@ input[name="choices"] {
     -webkit-box-flex: 0;
         -ms-flex: none;
             flex: none;
+    cursor: pointer;
 }
 .site-footer {
   background-color: rgba(229,57,53, .95);

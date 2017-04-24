@@ -7,23 +7,16 @@
     margin: 15px 0;
   }
 
-  &__left {
-    display: inline;
-  }
-
-  &__right {
-    display: inline;
-  }
-
   &__button {
       display: none;
       background-color: $mainGray;
-      font-family: 'Cabin', sans-serif;
+      font-family: $mainFontStack;
       color: #000;
       font-size: 1.2rem;
       letter-spacing: 3px;
+      font-weight: 700;
       border: 2px solid #000;
-      padding: 10px;
+      padding: .8rem;
       margin: 0px 15px;
       transition: all 0.3s ease;
 

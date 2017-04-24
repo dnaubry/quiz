@@ -5,10 +5,32 @@
     margin: 0px auto;
     padding: 10px 20px;
 
-
-    &__text {
+    &__intro {
       text-align: center;
-      font-size: 1.5em;
+
+      @mixin atLarge {
+        width: 70%;
+        margin: 0 auto;
+      }
+
+      @mixin atExtraLarge {
+        width: 60%;
+        margin: 0 auto;
+      }
+    }
+
+    &__intro-text {
+      font-size: 1.3rem;
+    }
+
+    &__intro-source {
+      font-size: 1rem;
+      text-align: right;
+    }
+
+    &__start-text {
+      font-size: 1.1rem;
+      padding-top: 50px;
     }
 
     &__question-count {
@@ -18,8 +40,8 @@
       margin-top: 0;
 
       @mixin atSmall {
-        font-size: 1.5rem;
-        word-spacing: .7rem;
+        font-size: 1.2rem;
+        word-spacing: .5rem;
       }
     }
 
@@ -27,8 +49,9 @@
       text-align: center;
       font-size: 1.3rem;
 
+
       @mixin atSmall {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
       }
     }
 
@@ -40,10 +63,13 @@
         font-size: 1em;
         margin: 0;
         font-weight: 400;
-        padding-left: 10px;
+        padding-left: .2rem;
+        width: 100%;
+        cursor: pointer;
+    
 
         @mixin atSmall {
-          font-size: 1.3rem;
+          font-size: 1.2rem;
         }
       }
     }
@@ -76,4 +102,5 @@
 
 input[name="choices"] {
     flex: none;
+    cursor: pointer;
 }

@@ -1,150 +1,182 @@
 import { questionSet as questionSet0 } from './data/got';
 import { questionSet as questionSet1 } from './data/buffy';
 import { questionSet as questionSet2 } from './data/parks';
-import { questionSet as questionSet3 } from './data/twinpeaks'; 
+import { questionSet as questionSet3 } from './data/twinpeaks';
 import { quizzes } from './data/quizzes';
-import { buttonEvents, displayButtons, resetButtonsToStart } from './modules/buttons';
+import { showButton, hideButton } from './modules/displayButtons';
 import { radioChecked } from './modules/radioChecked';
 import { validation, removeValidationMsg } from './modules/validation';
 import { finalScore } from './modules/finalScore';
+import { counter } from './modules/counter';
+
 var choicesTemplate = require('./templates/answerchoices.hbs'),
-  quizTemplate = require('./templates/startquiz.hbs');
-
-var allQuestionSets = [questionSet0, questionSet1, questionSet2, questionSet3],
+  quizTemplate = require('./templates/startquiz.hbs'),
+  allQuestionSets = [questionSet0, questionSet1, questionSet2, questionSet3],
   questionSet = allQuestionSets[0],
-  quizLength = questionSet.length - 1,
-	answers = [],
-  q = 0;
+  questionCounter = counter(),
+  answer = quizAnswers();
 
-displayQuiz();
-buttonEvents(startQuiz, prevQuestion, nextQuestion, reloadQuiz);
+function quizSetup() {
+  var quizLinks = document.getElementsByTagName('a'),
+    quizText = document.querySelector('.main-section__content'),
+    backgroundImage = document.getElementById('quiz-0__image');
 
-function startQuiz() {
-  displayButtons(q, quizLength);
-  insertCurrentQuestion(q);
-}
-
-function nextQuestion() {
-  if (radioChecked()) {
-    storeAnswer(q);
-    if (q !== quizLength) {
-      q++;
-      displayButtons(q, quizLength);
-      insertCurrentQuestion(q);
-    } else {
-      completeQuiz();
-    }
-  } else {
-    validation();
+  // Adds click and touch event listeners to each quiz link in the menu
+  for (var i = 0; i < quizLinks.length; i++) {
+    quizLinks[i].addEventListener('click', initiateQuiz, false);
+    quizLinks[i].addEventListener('touchend', initiateQuiz, false);
   }
-}
 
-function prevQuestion() {
-    var validationMsg = document.getElementById('validationMsg');
-    if(document.body.contains(validationMsg)) {
-        removeValidationMsg();
+  function removeActiveLinks(quizLinks) {
+    for (var i = 0; i < quizLinks.length; i++) {
+      quizLinks[i].classList.remove('active');
     }
-    q--;
-    displayButtons(q, quizLength);
-    insertCurrentQuestion(q);
-}
+  }
 
-function completeQuiz() {
-  q++;
-  displayButtons(q, quizLength);
-  finalScore(answers, questionSet);
-}
+  function addActiveLink(target) {
+    target.classList.add('active');
+  }
 
-function reloadQuiz() {
-	answers = [];
-	q = 0;
-	displayButtons(q, quizLength);
-	insertCurrentQuestion(q);
-}
+  // Initializes the variables for the selected quiz
+  function initiateQuiz() {
+    var target = this,
+      targetId = target.id,
+      quizNum = targetId.charAt(targetId.length - 1),
+      context,
+      displayQuizText,
+      start = document.getElementById('start'),
+      back = document.getElementById('back'),
+      next = document.getElementById('next'),
+      retry = document.getElementById('retry');
 
-function displayQuiz() {
-    var quizLinks = document.getElementsByTagName('a'),
-      quizLinks = Array.from(quizLinks),
-      quizText = document.querySelector('.main-section__content'),
-      backgroundImage = document.getElementById('quiz-0__image'),
-      activeLink = document.querySelector('.active');
-
-      for (var i = 0; i < quizLinks.length; i++) {
-        quizLinks[i].addEventListener('click', initiateQuiz, false);
-        quizLinks[i].addEventListener('touchend', initiateQuiz, false);
-      }
-
-    function initiateQuiz(e) {
-        var targetId = e.target.id,
-        quizNum,
-        context,
-        displayQuizText;
-
-        for (var i = 0; i < quizLinks.length; i++) {
-          quizLinks[i].classList.remove('active');
-        }
-
-        if (targetId === 'quiz-0') {
-          quizNum = 0;
-        } else if (targetId === 'quiz-1') {
-          quizNum = 1;
-        } else if (targetId === 'quiz-2') {
-          quizNum = 2;
-        } else if (targetId === 'quiz-3') {
-          quizNum = 3;
-        }
-        backgroundImage.id = `quiz-${quizNum}__image`;
-        quizLinks[quizNum].classList.add('active');
-        questionSet = allQuestionSets[quizNum];
-        quizLength = questionSet.length - 1;
-        answers = [];
-        q = 0;
-        context = {
-            quizName: quizzes[quizNum]
-        };
-        displayQuizText = quizTemplate(context);
-        quizText.innerHTML = displayQuizText;
-        resetButtonsToStart();
-        e.preventDefault(); 
-    }
-}
-
-// Inserts the current question, determined by counter q
-function insertCurrentQuestion(q) {
-  var qText = document.querySelector('.questions'),
+    backgroundImage.id = `quiz-${quizNum}__image`;
+    questionSet = allQuestionSets[quizNum];
+    answer = quizAnswers();
+    questionCounter = counter();
     context = {
-      qNum: q + 1,
-      quizLength: questionSet.length,
-      question: questionSet[q].question,
-      choices: questionSet[q].choices
-    },
-    displayChoices = choicesTemplate(context);
+      name: quizzes[quizNum].name,
+      quote: quizzes[quizNum].quote,
+      quoteSource: quizzes[quizNum].quoteSource
+    };
+    displayQuizText = quizTemplate(context);
+    quizText.innerHTML = displayQuizText;
 
-  qText.innerHTML = displayChoices;
-
-    // If the user goes back a question, checks the radio they previously selected
-  if (answers[q] !== undefined) {
-    document.querySelector(`input[value="${answers[q].answer}"]`).checked = true;
+    removeActiveLinks(quizLinks);
+    addActiveLink(target);
+    hideButton(retry);
+    hideButton(back);
+    hideButton(next);
+    showButton(start);
   }
 }
+quizSetup();
 
-// Adds selected answer to answers array for scoring
-function storeAnswer(q) {
-  var currentAnswer = {},
-    selectedAnswer = document.querySelector('[name="choices"]:checked').value,
-    currentChoice = questionSet[q].choices[selectedAnswer],
-    correctAnswer = (questionSet[q].correctAnswer).toString(),
-    qNum = q + 1;
+function operateQuiz() {
+  var start = document.getElementById('start'),
+    back = document.getElementById('back'),
+    next = document.getElementById('next'),
+    retry = document.getElementById('retry');
 
-  currentAnswer.answer = selectedAnswer;
-  currentAnswer.choice = currentChoice;
-  currentAnswer.questionNumber = qNum;
+  start.addEventListener('click', startQuiz, false);
+  back.addEventListener('click', prevQuestion, false);
+  next.addEventListener('click', nextQuestion, false);
+  retry.addEventListener('click', retryQuiz, false);
 
-  if (selectedAnswer === correctAnswer) {
-    currentAnswer.correct = true;
-  } else {
-    currentAnswer.correct = false;
+  // Inserts the current question, determined by value of questionCounter
+  function insertQuestion() {
+    var q = questionCounter.value(),
+      questionText = document.querySelector('.questions'),
+      context = {
+        qNum: q + 1,
+        quizLength: questionSet.length,
+        question: questionSet[q].question,
+        choices: questionSet[q].choices
+      },
+      displayChoices = choicesTemplate(context);
+
+    questionText.innerHTML = displayChoices;
   }
-  answers[q] = currentAnswer;
 
+  function startQuiz() {
+    showButton(next);
+    hideButton(start);
+    insertQuestion();
+  }
+
+  function prevQuestion() {
+    var q = questionCounter.value();
+    // Hide the Back button when going back to first question
+    if (q === 1) {
+      hideButton(back);
+    }
+    removeValidationMsg();
+    questionCounter.decrement();
+    insertQuestion();
+    answer.retrieve();
+  }
+
+  function nextQuestion() {
+    var q = questionCounter.value(),
+      quizLength = questionSet.length;
+    if (radioChecked()) {
+      answer.store();
+      if (q < (quizLength - 1)) {
+        // Show the Back button after the first question
+        if (q === 0) {
+          showButton(back);
+        }
+        questionCounter.increment();
+        insertQuestion();
+        answer.retrieve();
+      } else {
+        // After the last question, hide the Back and Next buttons, show the Retry button and score
+        hideButton(back);
+        hideButton(next);
+        showButton(retry);
+        finalScore(answer, questionSet);
+      }
+    } else {
+      // If no answer was selected when Next button was clicked, show validation message
+      validation();
+    }
+  }
+
+  function retryQuiz() {
+    // Reset answers
+    answer = quizAnswers();
+    hideButton(retry);
+    showButton(next);
+    // Reset counter
+    questionCounter = counter();
+    insertQuestion();
+  }
+}
+operateQuiz();
+
+function quizAnswers() {
+  var answers = [];
+
+  function store() {
+    var q = questionCounter.value(),
+      selectedAnswer = document.querySelector('[name="choices"]:checked').value;
+
+    answers[q] = selectedAnswer;
+  }
+
+  function retrieve() {
+    var q = questionCounter.value();
+
+    if (answers[q] !== undefined) {
+      var selectedAnswer = answers[q],
+        choices = document.querySelectorAll('[name="choices"]');
+
+      choices[selectedAnswer].checked = true;
+    }
+  }
+
+  function value() {
+    return answers;
+  }
+
+  return { store, retrieve, value }
 }

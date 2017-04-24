@@ -1,4 +1,6 @@
 $mainGray: #eeeeee;
 $darkGray: #a9a9a9;
 $mainRed: #e53935;
-/*$mainRed: #ef5350;*/
+
+$titleFontStack: 'Fjalla One', sans-serif;
+$mainFontStack: 'Lato', sans-serif;

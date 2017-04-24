@@ -1,8 +1,8 @@
 // Displays a message asking user to choose an answer if one is not selected
 function validation() {
-  var msgExists = document.getElementById('validationMsg');
+  var existingMsg = document.getElementById('validationMsg');
   // Checks if the message already exists so it doesn't display multiple messages
-  if (!document.body.contains(msgExists)) {
+  if (!document.body.contains(existingMsg)) {
     var msgEl = document.createElement('div'),
       msg = document.createTextNode('Please choose an answer!'),
       position = document.querySelector('.btn-container'),
@@ -24,9 +24,12 @@ function validation() {
 
 // Removes message when an answer is selected
 function removeValidationMsg() {
-   var removeMsgEl = document.getElementById('validationMsg');
-   var containerEl = removeMsgEl.parentNode;
-    containerEl.removeChild(removeMsgEl);
+  var validationMsg = document.getElementById('validationMsg');
+
+  if (document.body.contains(validationMsg)) {
+    var containerEl = validationMsg.parentNode;
+    containerEl.removeChild(validationMsg);
   }
+}
 
 export { validation, removeValidationMsg };

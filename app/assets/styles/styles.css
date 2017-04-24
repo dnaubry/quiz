@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro|Cabin');
+@import url('https://fonts.googleapis.com/css?family=Lato|Fjalla+One');
 @import "normalize.css";
 @import "base/_variables";
 @import "base/_mixins";
 @import "base/_global";
+@import "base/_background";
 @import "modules/_site-nav";
 @import "modules/_wrapper";
 @import "modules/_main-section";

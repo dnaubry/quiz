@@ -1,6 +1,6 @@
 .wrapper {
-  width: 100%;
   flex: 1;
+  width: 100%;
   
   @mixin atSmall {
     width: 95%;

@@ -4,8 +4,8 @@
 {{#each answers}}
 <ul>
   <li class="questions__score">
-    {{this.questionNumber}} - {{this.choice}}
-      {{#if this.correct}}
+    {{this.questionNumber}} - {{this.answerText}}
+      {{#if this.isCorrect}}
         <span class="questions__score--correct">✔</span>
       {{else}}
         <span class="questions__score--incorrect">X</span>
