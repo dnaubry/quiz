@@ -1,4 +1,5 @@
 .site-footer {
   background-color: rgba($mainRed, .95);
+  font-size: .8rem;
   padding: 0 10px;
 }

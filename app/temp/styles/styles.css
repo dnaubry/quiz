@@ -750,5 +750,6 @@ input[name="choices"] {
 }
 .site-footer {
   background-color: rgba(229,57,53, .95);
+  font-size: .8rem;
   padding: 0 10px;
 }
