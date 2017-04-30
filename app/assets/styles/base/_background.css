@@ -1,22 +1,4 @@
 html {
-    &#quiz-0__image {
-          background: url('../../assets/images/castle-small.jpg') no-repeat center center fixed;
-          background-size: cover;
-        }
-    &#quiz-1__image {
-          background: url('../../assets/images/graveyard-small.jpg') no-repeat center center fixed;
-          background-size: cover;
-        }
-
-        &#quiz-2__image {
-          background: url('../../assets/images/swings-small.jpg') no-repeat center center fixed;
-          background-size: cover;
-        }
-
-        &#quiz-3__image {
-          background: url('../../assets/images/trees-small.jpg') no-repeat center center fixed;
-          background-size: cover;
-        }
 
     @mixin atSmall {
         &#quiz-0__image {

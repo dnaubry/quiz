@@ -383,22 +383,6 @@ body {
 a {
   color: #000;
 }
-html#quiz-0__image {
-  background: url('../../assets/images/castle-small.jpg') no-repeat center center fixed;
-  background-size: cover;
-}
-html#quiz-1__image {
-  background: url('../../assets/images/graveyard-small.jpg') no-repeat center center fixed;
-  background-size: cover;
-}
-html#quiz-2__image {
-  background: url('../../assets/images/swings-small.jpg') no-repeat center center fixed;
-  background-size: cover;
-}
-html#quiz-3__image {
-  background: url('../../assets/images/trees-small.jpg') no-repeat center center fixed;
-  background-size: cover;
-}
 @media (min-width: 580px){
   html#quiz-0__image{
     background: url('../../assets/images/castle-large.jpg') no-repeat center center fixed;
@@ -556,6 +540,11 @@ html#quiz-3__image {
 .main-section {
     background-color: rgba(255, 255, 255, .9);
     padding: .7rem;
+}
+@media (min-width: 580px){
+  .main-section{
+    margin-bottom: 1rem;
+  }
 }
 .main-section__title {
   font-family: 'Fjalla One', sans-serif;

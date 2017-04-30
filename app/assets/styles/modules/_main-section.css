@@ -2,6 +2,10 @@
     background-color: rgba(255, 255, 255, .9);
     padding: .7rem;
 
+    @mixin atSmall {
+        margin-bottom: 1rem;
+    }
+
     &__title {
         font-family: $titleFontStack;
         font-weight: 700;
